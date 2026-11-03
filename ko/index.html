@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kevin Hernández “El Señor” · 개발자, 사이버 보안, OSINT</title>
-<meta name="description" content="Kevin Hernández(kevxngg), “El Señor”로 알려져 있습니다. Android, 웹(PHP), Python 개발자로 사이버 보안과 OSINT 도구에 집중합니다. DomainInfo와 Monitor 제작자.">
+<title>Kevin Hernández “제왕” · 개발자, 사이버 보안, OSINT</title>
+<meta name="description" content="Kevin Hernández(kevxngg), “제왕”로 알려져 있습니다. Android, 웹(PHP), Python 개발자로 사이버 보안과 OSINT 도구에 집중합니다. DomainInfo와 Monitor 제작자.">
 <meta name="author" content="Kevin Hernández">
 <link rel="canonical" href="https://kevxngg.github.io/ko/">
 <link rel="alternate" hreflang="en" href="https://kevxngg.github.io/">
@@ -22,7 +22,7 @@
 <meta name="theme-color" content="#05070D">
 <script>document.documentElement.className = "js";</script>
 <meta property="og:type" content="profile">
-<meta property="og:title" content="Kevin Hernández “El Señor” (kevxngg)">
+<meta property="og:title" content="Kevin Hernández “제왕” (kevxngg)">
 <meta property="og:description" content="Android, 웹, Python 개발자. 사이버 보안과 OSINT에 집중합니다. DomainInfo와 Monitor 제작자.">
 <meta property="og:url" content="https://kevxngg.github.io/ko/">
 <meta property="og:site_name" content="kevxngg">
@@ -41,7 +41,7 @@
 <meta property="profile:last_name" content="Hernández">
 <meta property="profile:username" content="kevxngg">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kevin Hernández “El Señor” (kevxngg)">
+<meta name="twitter:title" content="Kevin Hernández “제왕” (kevxngg)">
 <meta name="twitter:description" content="Android, 웹, Python 개발자. 사이버 보안과 OSINT에 집중합니다. DomainInfo와 Monitor 제작자.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23117DBB'/%3E%3Ctext x='12' y='17' text-anchor='middle' font-family='Segoe UI,Arial,sans-serif' font-size='14' font-weight='700' fill='white'%3EK%3C/text%3E%3C/svg%3E">
 <script type="application/ld+json">
@@ -51,6 +51,7 @@
   "name": "Kevin Hernández",
   "alternateName": [
     "El Señor",
+    "제왕",
     "kevxngg"
   ],
   "url": "https://kevxngg.github.io/ko/",
@@ -371,6 +372,7 @@ svg { max-width: 100%; }
   margin: 0 0 14px;
 }
 .w { display: inline-block; }
+[dir="rtl"] .hero h1 { direction: ltr; text-align: right; } /* Latin name keeps its word order in RTL */
 .js .w { opacity: 0; transform: translateY(0.35em); filter: blur(8px); animation: rise .9s var(--ease-out) forwards; animation-delay: calc(var(--i) * 70ms + 120ms); }
 @keyframes rise { to { opacity: 1; transform: none; filter: blur(0); } }
 .alias { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font-size: 18px; margin: 0 0 16px; color: rgba(255, 255, 255, 0.86); }
@@ -384,6 +386,10 @@ svg { max-width: 100%; }
   animation: shine 8s linear infinite;
 }
 @keyframes shine { to { background-position: 300% 0; } }
+.nick { direction: ltr; unicode-bidi: isolate; font-family: var(--mono); font-size: 17px; padding: 5px 12px; border-radius: 10px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); color: rgba(255, 255, 255, 0.85); }
+.nick .kw { color: #C586C0; }
+.nick .grad { font-weight: 600; }
+.nick .cm { color: rgba(255, 255, 255, 0.42); }
 .handle-chip { font-family: var(--mono); font-size: 13px; color: rgba(255, 255, 255, 0.7); padding: 2px 8px; border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 6px; }
 .summary { color: rgba(255, 255, 255, 0.7); margin: 0 0 26px; max-width: 52ch; font-size: 17px; }
 .js .fade-up { opacity: 0; transform: translateY(16px); animation: fadeUp .8s var(--ease-out) forwards; animation-delay: var(--d, .4s); }
@@ -949,7 +955,7 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
         <p class="fade-up" style="--d:.05s"><span class="chip"><span class="dot"></span><span>Monitor 빌드 <span data-live-build>21</span> 출시</span></span></p>
         <p class="role fade-up" style="--d:.1s">개발자 · Android · 웹 · Python · 사이버 보안과 OSINT</p>
         <h1><span class="w" style="--i:0">Kevin</span> <span class="w" style="--i:1">Hernández</span></h1>
-        <p class="alias fade-up" style="--d:.35s"><span>별명 <span class="grad"><bdi>“El Señor”</bdi></span></span><span class="handle-chip"><bdi>@kevxngg</bdi></span></p>
+        <p class="alias fade-up" style="--d:.35s"><code class="nick"><span class="kw">alias</span> = <span class="grad">"<bdi>제왕</bdi>"</span><span class="cm"> // El Señor</span></code><span class="handle-chip"><bdi>@kevxngg</bdi></span></p>
         <p class="summary fade-up" style="--d:.45s">Kotlin으로 루팅된 Android용 앱을, PHP로 웹 애플리케이션을, Python으로 도구를 개발하며 사이버 보안과 OSINT에 집중합니다. 대표 프로젝트로는 도메인과 IP를 정찰하는 OSINT 도구 DomainInfo와 Windows 11 스타일의 Android 작업 관리자 Monitor가 있습니다.</p>
         <div class="actions fade-up" style="--d:.55s">
           <a class="btn primary press magnet" href="#monitor"><svg aria-hidden="true"><use href="#i-monitor"/></svg>Monitor 살펴보기</a>
@@ -1130,17 +1136,25 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
         <div class="cmd reveal"><a class="btn sm press" href="https://github.com/kevxngg/monitor-root/releases"><svg aria-hidden="true"><use href="#i-list"/></svg>모든 릴리스</a></div>
       </div>
       <ol class="timeline collapsed" id="timeline">
-      <li class="reveal" style="--d:0.00s"><span class="node">18</span><article class="card spot tl-card"><header><b>Build 18</b><time datetime="2026-11-03T02:49:01Z" data-long>2026-11-03</time></header><p>앱 이름이 Monitor로 바뀌었습니다.</p></article></li>
-      <li class="reveal" style="--d:0.04s"><span class="node">17</span><article class="card spot tl-card"><header><b>Build 17</b><time datetime="2026-11-03T02:36:36Z" data-long>2026-11-03</time></header><p>새 게임 섹션: 게임 모드와 평균 FPS, 최고 온도, 배터리 사용량을 담은 판별 요약.</p></article></li>
-      <li class="reveal" style="--d:0.08s"><span class="node">15</span><article class="card spot tl-card"><header><b>Build 15</b><time datetime="2026-11-03T02:07:36Z" data-long>2026-11-03</time></header><p>5가지 레이아웃과 색상으로 구분된 FPS를 갖춘 플로팅 모니터.</p></article></li>
-      <li class="reveal" style="--d:0.12s"><span class="node">14</span><article class="card spot tl-card"><header><b>Build 14</b><time datetime="2026-11-03T01:44:23Z" data-long>2026-11-03</time></header><p>클러스터별 CPU 고급 설정(거버너와 최대 주파수)과 GPU 설정.</p></article></li>
-      <li class="reveal" style="--d:0.16s"><span class="node">13</span><article class="card spot tl-card"><header><b>Build 13</b><time datetime="2026-11-03T01:32:30Z" data-long>2026-11-03</time></header><p>모든 앱 위에 표시되는 플로팅 모니터와 빠른 설정 타일.</p></article></li>
-      <li class="reveal" style="--d:0.20s"><span class="node">12</span><article class="card spot tl-card"><header><b>Build 12</b><time datetime="2026-11-02T15:27:31Z" data-long>2026-11-02</time></header><p>MIT 라이선스와 업데이트 오류의 상세 진단.</p></article></li>
-      <li class="reveal" style="--d:0.24s"><span class="node">6</span><article class="card spot tl-card"><header><b>Build 6</b><time datetime="2026-11-02T03:16:50Z" data-long>2026-11-02</time></header><p>Mali-G57 MC2, Adreno 610처럼 어떤 휴대폰에서도 실제 GPU 이름 표시.</p></article></li>
-      <li class="reveal" style="--d:0.24s"><span class="node">4</span><article class="card spot tl-card"><header><b>Build 4</b><time datetime="2026-11-02T02:26:04Z" data-long>2026-11-02</time></header><p>11개 언어 지원, 아랍어는 오른쪽에서 왼쪽 인터페이스.</p></article></li>
-      <li class="reveal" style="--d:0.24s"><span class="node">3</span><article class="card spot tl-card"><header><b>Build 3</b><time datetime="2026-11-02T02:09:59Z" data-long>2026-11-02</time></header><p>루팅으로 자동 다운로드·설치되는 업데이트.</p></article></li>
-      <li class="reveal" style="--d:0.24s"><span class="node">2</span><article class="card spot tl-card"><header><b>Build 2</b><time datetime="2026-11-02T01:44:42Z" data-long>2026-11-02</time></header><p>Windows 11 스타일 새 디자인: 사이드바, 검색, 명령 모음.</p></article></li>
-      <li class="reveal" style="--d:0.24s"><span class="node">1</span><article class="card spot tl-card"><header><b>Build 1</b><time datetime="2026-11-01T23:13:43Z" data-long>2026-11-01</time></header><p>첫 버전: CPU·RAM 사용량이 표시되는 프로세스 목록과 루팅으로 작업 종료.</p></article></li>
+      <li class="reveal" data-build="21" style="--d:0.00s"><span class="node">21</span><article class="card spot tl-card"><header><b>Build 21</b><time datetime="2026-11-03T19:33:09Z" data-long>2026-11-03</time><span class="tag">최신</span></header><p>프로젝트 내부 정리, 앱은 이전과 똑같이 작동합니다.</p></article></li>
+      <li class="reveal" data-build="19" style="--d:0.04s"><span class="node">19</span><article class="card spot tl-card"><header><b>Build 19</b><time datetime="2026-11-03T03:14:23Z" data-long>2026-11-03</time></header><p>빌드 유지 보수, 앱 변경 없음.</p></article></li>
+      <li class="reveal" data-build="18" style="--d:0.08s"><span class="node">18</span><article class="card spot tl-card"><header><b>Build 18</b><time datetime="2026-11-03T02:49:01Z" data-long>2026-11-03</time></header><p>앱 이름이 Monitor로 바뀌었습니다.</p></article></li>
+      <li class="reveal" data-build="17" style="--d:0.12s"><span class="node">17</span><article class="card spot tl-card"><header><b>Build 17</b><time datetime="2026-11-03T02:36:36Z" data-long>2026-11-03</time></header><p>게임 섹션(게임 모드와 판별 요약), 알림, 모든 프로세서의 GPU 제어.</p></article></li>
+      <li class="reveal" data-build="15" style="--d:0.16s"><span class="node">15</span><article class="card spot tl-card"><header><b>Build 15</b><time datetime="2026-11-03T02:07:36Z" data-long>2026-11-03</time></header><p>5가지 레이아웃과 색상별 FPS를 갖춘 플로팅 모니터, 더 정확한 FPS 측정.</p></article></li>
+      <li class="reveal" data-build="14" style="--d:0.20s"><span class="node">14</span><article class="card spot tl-card"><header><b>Build 14</b><time datetime="2026-11-03T01:44:23Z" data-long>2026-11-03</time></header><p>클러스터별 CPU 고급 설정, GPU 설정, 플로팅 모니터 새 디자인.</p></article></li>
+      <li class="reveal" data-build="13" style="--d:0.24s"><span class="node">13</span><article class="card spot tl-card"><header><b>Build 13</b><time datetime="2026-11-03T01:32:30Z" data-long>2026-11-03</time></header><p>플로팅 모니터, 빠른 설정 타일, 위젯, 배터리 기록, 전원 모드.</p></article></li>
+      <li class="reveal" data-build="12" style="--d:0.24s"><span class="node">12</span><article class="card spot tl-card"><header><b>Build 12</b><time datetime="2026-11-02T15:27:31Z" data-long>2026-11-02</time></header><p>MIT 라이선스와 업데이트 오류의 상세 진단.</p></article></li>
+      <li class="reveal" data-build="11" style="--d:0.24s"><span class="node">11</span><article class="card spot tl-card"><header><b>Build 11</b><time datetime="2026-11-02T14:30:27Z" data-long>2026-11-02</time></header><p>정보 페이지에 소셜 네트워크 추가.</p></article></li>
+      <li class="reveal" data-build="10" style="--d:0.24s"><span class="node">10</span><article class="card spot tl-card"><header><b>Build 10</b><time datetime="2026-11-02T04:17:55Z" data-long>2026-11-02</time></header><p>새 정보 페이지, 새 아이콘, 알림의 ‘지금 업데이트’ 버튼.</p></article></li>
+      <li class="reveal" data-build="9" style="--d:0.24s"><span class="node">9</span><article class="card spot tl-card"><header><b>Build 9</b><time datetime="2026-11-02T04:02:00Z" data-long>2026-11-02</time></header><p>기기 정보와 GitHub 요청 제한 없는 업데이트 확인.</p></article></li>
+      <li class="reveal" data-build="8" style="--d:0.24s"><span class="node">8</span><article class="card spot tl-card"><header><b>Build 8</b><time datetime="2026-11-02T03:53:19Z" data-long>2026-11-02</time></header><p>앱이 닫혀 있어도 알림으로 업데이트 안내.</p></article></li>
+      <li class="reveal" data-build="7" style="--d:0.24s"><span class="node">7</span><article class="card spot tl-card"><header><b>Build 7</b><time datetime="2026-11-02T03:28:10Z" data-long>2026-11-02</time></header><p>모든 휴대폰에서 배터리 전류를 같은 방식으로 표시.</p></article></li>
+      <li class="reveal" data-build="6" style="--d:0.24s"><span class="node">6</span><article class="card spot tl-card"><header><b>Build 6</b><time datetime="2026-11-02T03:16:50Z" data-long>2026-11-02</time></header><p>모든 휴대폰에서 실제 GPU 이름 표시, MediaTek 프로세서 GPU 정보 지원.</p></article></li>
+      <li class="reveal" data-build="5" style="--d:0.24s"><span class="node">5</span><article class="card spot tl-card"><header><b>Build 5</b><time datetime="2026-11-02T02:48:43Z" data-long>2026-11-02</time></header><p>잘못되었거나 멈춘 온도 센서를 무시합니다.</p></article></li>
+      <li class="reveal" data-build="4" style="--d:0.24s"><span class="node">4</span><article class="card spot tl-card"><header><b>Build 4</b><time datetime="2026-11-02T02:26:04Z" data-long>2026-11-02</time></header><p>11개 언어, 아랍어는 오른쪽에서 왼쪽 인터페이스.</p></article></li>
+      <li class="reveal" data-build="3" style="--d:0.24s"><span class="node">3</span><article class="card spot tl-card"><header><b>Build 3</b><time datetime="2026-11-02T02:09:59Z" data-long>2026-11-02</time></header><p>루팅으로 자동 다운로드·설치되는 업데이트.</p></article></li>
+      <li class="reveal" data-build="2" style="--d:0.24s"><span class="node">2</span><article class="card spot tl-card"><header><b>Build 2</b><time datetime="2026-11-02T01:44:42Z" data-long>2026-11-02</time></header><p>Windows 11 스타일 새 디자인, 프로세스 그룹화, 새 섹션.</p></article></li>
+      <li class="reveal" data-build="1" style="--d:0.24s"><span class="node">1</span><article class="card spot tl-card"><header><b>Build 1</b><time datetime="2026-11-01T23:13:43Z" data-long>2026-11-01</time></header><p>첫 버전: 프로세스, 성능 그래프, 배터리, 온도, Wi‑Fi.</p></article></li>
       </ol>
       <button type="button" class="btn sm press more-btn" id="more" aria-expanded="false" aria-controls="timeline"><svg aria-hidden="true"><use href="#i-expand"/></svg><span>모든 빌드 보기</span></button>
     </div>
@@ -1257,7 +1271,7 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
         <aside class="card tilt card-id reveal" style="--d:.08s">
           <div class="who">
             <span class="logo avatar" aria-hidden="true">K</span>
-            <div><h3>Kevin Hernández</h3><p><bdi>“El Señor”</bdi> · <bdi>@kevxngg</bdi></p></div>
+            <div><h3>Kevin Hernández</h3><p><bdi>“제왕”</bdi> · <bdi>@kevxngg</bdi></p></div>
           </div>
           <dl>
             <div><dt>역할</dt><dd>개발자 · 사이버 보안</dd></div>
@@ -1276,7 +1290,7 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
   <div class="foot">
     <div class="about-f">
       <a class="brand" href="#top"><span class="logo" aria-hidden="true">K</span><b>kevxngg</b></a>
-      <p>Kevin Hernández “El Señor”의 개인 사이트. 프레임워크 없이 직접 작성한 HTML이며, 디자인은 Windows 11에서 영감을 받았습니다.</p>
+      <p>Kevin Hernández “제왕”의 개인 사이트. 프레임워크 없이 직접 작성한 HTML이며, 디자인은 Windows 11에서 영감을 받았습니다.</p>
     </div>
     <div>
       <h4>섹션</h4>
@@ -1291,7 +1305,7 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
       <ul><li><a href="https://t.me/kevxngg" rel="me">Telegram</a></li><li><a href="https://www.linkedin.com/in/kevxngg" rel="me">LinkedIn</a></li><li><a href="https://github.com/kevxngg" rel="me">GitHub</a></li></ul>
     </div>
   </div>
-  <div class="copy"><span>© <span id="year">2026</span> Kevin Hernández · <bdi>“El Señor”</bdi></span><a href="#top">맨 위로</a></div>
+  <div class="copy"><span>© <span id="year">2026</span> Kevin Hernández · <bdi>“제왕”</bdi></span><a href="#top">맨 위로</a></div>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -1299,7 +1313,7 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
 <script>
 (function () {
   "use strict";
-  var T = {"copied": "Discord 사용자 이름이 복사되었습니다", "latest": "최신 버전: 빌드 {b}, {d} 출시.", "more": "모든 빌드 보기", "less": "접기"};
+  var T = {"copied": "Discord 사용자 이름이 복사되었습니다", "latest": "최신 버전: 빌드 {b}, {d} 출시.", "more": "모든 빌드 보기", "less": "접기", "tlNew": "GitHub에서 새 기능 보기", "tlLatest": "최신"};
   var LANG = "ko";
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -1867,6 +1881,37 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
     a.textContent = T.latest.replace("{b}", build).replace("{d}", fmtDate(rel.published_at, true));
     el.textContent = ""; el.appendChild(a);
     document.querySelectorAll("[data-live-build]").forEach(function (n) { n.textContent = build; });
+  }).catch(function () {});
+  function firstNote(body) {
+    var m = (body || "").split("\n").filter(function (l) { return /^\s*[-*] /.test(l); })[0];
+    return m ? m.replace(/^\s*[-*] /, "").trim() : "";
+  }
+  getJSON("https://api.github.com/repos/kevxngg/monitor-root/releases?per_page=30").then(function (list) {
+    var tl = $("timeline"), first = tl.querySelector("li[data-build]");
+    if (!first) return;
+    var known = +first.dataset.build;
+    var fresh = list.filter(function (r) { return !r.draft && !r.prerelease; })
+      .map(function (r) { return { b: parseInt(String(r.tag_name).replace("build-", ""), 10), r: r }; })
+      .filter(function (x) { return x.b > known; })
+      .sort(function (a, c) { return a.b - c.b; });
+    if (!fresh.length) return;
+    fresh.forEach(function (x) {
+      var li = first.cloneNode(true);
+      li.dataset.build = x.b; li.classList.add("in");
+      li.querySelector(".node").textContent = x.b;
+      li.querySelector("header b").textContent = "Build " + x.b;
+      var tm = li.querySelector("time");
+      tm.setAttribute("datetime", x.r.published_at); tm.textContent = fmtDate(x.r.published_at, true);
+      var p = li.querySelector("p"), note = LANG === "es" ? firstNote(x.r.body) : "";
+      p.textContent = "";
+      if (note) p.textContent = note;
+      else { var a = document.createElement("a"); a.href = x.r.html_url; a.textContent = T.tlNew; p.appendChild(a); }
+      tl.insertBefore(li, tl.firstChild);
+      first = li;
+    });
+    tl.querySelectorAll("header .tag").forEach(function (t) { t.remove(); });
+    var tag = document.createElement("span"); tag.className = "tag"; tag.textContent = T.tlLatest;
+    tl.querySelector("li header").appendChild(tag);
   }).catch(function () {});
   getJSON("https://api.github.com/users/kevxngg/repos?per_page=100&sort=pushed").then(function (repos) {
     repos.forEach(function (r) {

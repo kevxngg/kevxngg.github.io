@@ -371,6 +371,7 @@ svg { max-width: 100%; }
   margin: 0 0 14px;
 }
 .w { display: inline-block; }
+[dir="rtl"] .hero h1 { direction: ltr; text-align: right; } /* Latin name keeps its word order in RTL */
 .js .w { opacity: 0; transform: translateY(0.35em); filter: blur(8px); animation: rise .9s var(--ease-out) forwards; animation-delay: calc(var(--i) * 70ms + 120ms); }
 @keyframes rise { to { opacity: 1; transform: none; filter: blur(0); } }
 .alias { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font-size: 18px; margin: 0 0 16px; color: rgba(255, 255, 255, 0.86); }
@@ -384,6 +385,10 @@ svg { max-width: 100%; }
   animation: shine 8s linear infinite;
 }
 @keyframes shine { to { background-position: 300% 0; } }
+.nick { direction: ltr; unicode-bidi: isolate; font-family: var(--mono); font-size: 17px; padding: 5px 12px; border-radius: 10px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); color: rgba(255, 255, 255, 0.85); }
+.nick .kw { color: #C586C0; }
+.nick .grad { font-weight: 600; }
+.nick .cm { color: rgba(255, 255, 255, 0.42); }
 .handle-chip { font-family: var(--mono); font-size: 13px; color: rgba(255, 255, 255, 0.7); padding: 2px 8px; border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 6px; }
 .summary { color: rgba(255, 255, 255, 0.7); margin: 0 0 26px; max-width: 52ch; font-size: 17px; }
 .js .fade-up { opacity: 0; transform: translateY(16px); animation: fadeUp .8s var(--ease-out) forwards; animation-delay: var(--d, .4s); }
@@ -949,7 +954,7 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
         <p class="fade-up" style="--d:.05s"><span class="chip"><span class="dot"></span><span>Monitor build <span data-live-build>21</span> disponible</span></span></p>
         <p class="role fade-up" style="--d:.1s">Desarrollador · Android · Web · Python · Ciberseguridad y OSINT</p>
         <h1><span class="w" style="--i:0">Kevin</span> <span class="w" style="--i:1">Hernández</span></h1>
-        <p class="alias fade-up" style="--d:.35s"><span>Conocido como <span class="grad"><bdi>“El Señor”</bdi></span></span><span class="handle-chip"><bdi>@kevxngg</bdi></span></p>
+        <p class="alias fade-up" style="--d:.35s"><code class="nick"><span class="kw">alias</span> = <span class="grad">"<bdi>El Señor</bdi>"</span></code><span class="handle-chip"><bdi>@kevxngg</bdi></span></p>
         <p class="summary fade-up" style="--d:.45s">Desarrollo apps para Android con root en Kotlin, aplicaciones web en PHP y herramientas en Python, con enfoque en ciberseguridad y OSINT. Entre mis proyectos están DomainInfo, una herramienta OSINT de reconocimiento de dominios e IPs, y Monitor, un administrador de tareas para Android al estilo de Windows 11.</p>
         <div class="actions fade-up" style="--d:.55s">
           <a class="btn primary press magnet" href="#monitor"><svg aria-hidden="true"><use href="#i-monitor"/></svg>Conocer Monitor</a>
@@ -1130,17 +1135,25 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
         <div class="cmd reveal"><a class="btn sm press" href="https://github.com/kevxngg/monitor-root/releases"><svg aria-hidden="true"><use href="#i-list"/></svg>Todas las versiones</a></div>
       </div>
       <ol class="timeline collapsed" id="timeline">
-      <li class="reveal" style="--d:0.00s"><span class="node">18</span><article class="card spot tl-card"><header><b>Build 18</b><time datetime="2026-11-03T02:49:01Z" data-long>2026-11-03</time></header><p>La app pasa a llamarse Monitor.</p></article></li>
-      <li class="reveal" style="--d:0.04s"><span class="node">17</span><article class="card spot tl-card"><header><b>Build 17</b><time datetime="2026-11-03T02:36:36Z" data-long>2026-11-03</time></header><p>Nueva sección Juegos: modo juego y resumen de cada partida con FPS promedio, temperatura máxima y batería usada.</p></article></li>
-      <li class="reveal" style="--d:0.08s"><span class="node">15</span><article class="card spot tl-card"><header><b>Build 15</b><time datetime="2026-11-03T02:07:36Z" data-long>2026-11-03</time></header><p>Monitor flotante con 5 diseños y FPS por colores.</p></article></li>
-      <li class="reveal" style="--d:0.12s"><span class="node">14</span><article class="card spot tl-card"><header><b>Build 14</b><time datetime="2026-11-03T01:44:23Z" data-long>2026-11-03</time></header><p>Ajustes avanzados de la CPU por clúster (gobernador y frecuencia máxima) y ajustes de la GPU.</p></article></li>
-      <li class="reveal" style="--d:0.16s"><span class="node">13</span><article class="card spot tl-card"><header><b>Build 13</b><time datetime="2026-11-03T01:32:30Z" data-long>2026-11-03</time></header><p>Monitor flotante encima de cualquier app y botón en los ajustes rápidos.</p></article></li>
-      <li class="reveal" style="--d:0.20s"><span class="node">12</span><article class="card spot tl-card"><header><b>Build 12</b><time datetime="2026-11-02T15:27:31Z" data-long>2026-11-02</time></header><p>Licencia MIT y diagnóstico detallado de los errores de actualización.</p></article></li>
-      <li class="reveal" style="--d:0.24s"><span class="node">6</span><article class="card spot tl-card"><header><b>Build 6</b><time datetime="2026-11-02T03:16:50Z" data-long>2026-11-02</time></header><p>El nombre real de la GPU en cualquier teléfono, como Mali-G57 MC2 o Adreno 610.</p></article></li>
-      <li class="reveal" style="--d:0.24s"><span class="node">4</span><article class="card spot tl-card"><header><b>Build 4</b><time datetime="2026-11-02T02:26:04Z" data-long>2026-11-02</time></header><p>11 idiomas, con interfaz de derecha a izquierda en árabe.</p></article></li>
-      <li class="reveal" style="--d:0.24s"><span class="node">3</span><article class="card spot tl-card"><header><b>Build 3</b><time datetime="2026-11-02T02:09:59Z" data-long>2026-11-02</time></header><p>Actualizaciones que se descargan e instalan solas con root.</p></article></li>
-      <li class="reveal" style="--d:0.24s"><span class="node">2</span><article class="card spot tl-card"><header><b>Build 2</b><time datetime="2026-11-02T01:44:42Z" data-long>2026-11-02</time></header><p>Nuevo diseño al estilo de Windows 11: barra lateral, buscador y barra de comandos.</p></article></li>
-      <li class="reveal" style="--d:0.24s"><span class="node">1</span><article class="card spot tl-card"><header><b>Build 1</b><time datetime="2026-11-01T23:13:43Z" data-long>2026-11-01</time></header><p>Primera versión: lista de procesos con uso de CPU y RAM, y finalizar tareas con root.</p></article></li>
+      <li class="reveal" data-build="21" style="--d:0.00s"><span class="node">21</span><article class="card spot tl-card"><header><b>Build 21</b><time datetime="2026-11-03T19:33:09Z" data-long>2026-11-03</time><span class="tag">Última</span></header><p>Limpieza interna del proyecto; la app funciona igual que antes.</p></article></li>
+      <li class="reveal" data-build="19" style="--d:0.04s"><span class="node">19</span><article class="card spot tl-card"><header><b>Build 19</b><time datetime="2026-11-03T03:14:23Z" data-long>2026-11-03</time></header><p>Mantenimiento de la compilación, sin cambios en la app.</p></article></li>
+      <li class="reveal" data-build="18" style="--d:0.08s"><span class="node">18</span><article class="card spot tl-card"><header><b>Build 18</b><time datetime="2026-11-03T02:49:01Z" data-long>2026-11-03</time></header><p>La app pasa a llamarse Monitor.</p></article></li>
+      <li class="reveal" data-build="17" style="--d:0.12s"><span class="node">17</span><article class="card spot tl-card"><header><b>Build 17</b><time datetime="2026-11-03T02:36:36Z" data-long>2026-11-03</time></header><p>Sección Juegos con modo juego y resumen de cada partida, alertas y control de la GPU en cualquier procesador.</p></article></li>
+      <li class="reveal" data-build="15" style="--d:0.16s"><span class="node">15</span><article class="card spot tl-card"><header><b>Build 15</b><time datetime="2026-11-03T02:07:36Z" data-long>2026-11-03</time></header><p>Monitor flotante con 5 diseños y FPS por colores, y medición de FPS más fiable.</p></article></li>
+      <li class="reveal" data-build="14" style="--d:0.20s"><span class="node">14</span><article class="card spot tl-card"><header><b>Build 14</b><time datetime="2026-11-03T01:44:23Z" data-long>2026-11-03</time></header><p>Ajustes avanzados de la CPU por clúster, ajustes de la GPU y nuevo diseño del monitor flotante.</p></article></li>
+      <li class="reveal" data-build="13" style="--d:0.24s"><span class="node">13</span><article class="card spot tl-card"><header><b>Build 13</b><time datetime="2026-11-03T01:32:30Z" data-long>2026-11-03</time></header><p>Monitor flotante, botón en los ajustes rápidos, widget, historial de batería y modos de energía.</p></article></li>
+      <li class="reveal" data-build="12" style="--d:0.24s"><span class="node">12</span><article class="card spot tl-card"><header><b>Build 12</b><time datetime="2026-11-02T15:27:31Z" data-long>2026-11-02</time></header><p>Licencia MIT y diagnóstico detallado de los errores de actualización.</p></article></li>
+      <li class="reveal" data-build="11" style="--d:0.24s"><span class="node">11</span><article class="card spot tl-card"><header><b>Build 11</b><time datetime="2026-11-02T14:30:27Z" data-long>2026-11-02</time></header><p>Redes sociales en la página Acerca de.</p></article></li>
+      <li class="reveal" data-build="10" style="--d:0.24s"><span class="node">10</span><article class="card spot tl-card"><header><b>Build 10</b><time datetime="2026-11-02T04:17:55Z" data-long>2026-11-02</time></header><p>Nueva página Acerca de, nuevo icono y botón «Actualizar ahora» en la notificación.</p></article></li>
+      <li class="reveal" data-build="9" style="--d:0.24s"><span class="node">9</span><article class="card spot tl-card"><header><b>Build 9</b><time datetime="2026-11-02T04:02:00Z" data-long>2026-11-02</time></header><p>Información del dispositivo y búsqueda de actualizaciones sin el límite de consultas de GitHub.</p></article></li>
+      <li class="reveal" data-build="8" style="--d:0.24s"><span class="node">8</span><article class="card spot tl-card"><header><b>Build 8</b><time datetime="2026-11-02T03:53:19Z" data-long>2026-11-02</time></header><p>Aviso de actualización en una notificación, aunque la app esté cerrada.</p></article></li>
+      <li class="reveal" data-build="7" style="--d:0.24s"><span class="node">7</span><article class="card spot tl-card"><header><b>Build 7</b><time datetime="2026-11-02T03:28:10Z" data-long>2026-11-02</time></header><p>La corriente de la batería se muestra igual en todos los teléfonos.</p></article></li>
+      <li class="reveal" data-build="6" style="--d:0.24s"><span class="node">6</span><article class="card spot tl-card"><header><b>Build 6</b><time datetime="2026-11-02T03:16:50Z" data-long>2026-11-02</time></header><p>Nombre real de la GPU en cualquier teléfono y datos de GPU en procesadores MediaTek.</p></article></li>
+      <li class="reveal" data-build="5" style="--d:0.24s"><span class="node">5</span><article class="card spot tl-card"><header><b>Build 5</b><time datetime="2026-11-02T02:48:43Z" data-long>2026-11-02</time></header><p>Se ignoran los sensores de temperatura falsos o trabados.</p></article></li>
+      <li class="reveal" data-build="4" style="--d:0.24s"><span class="node">4</span><article class="card spot tl-card"><header><b>Build 4</b><time datetime="2026-11-02T02:26:04Z" data-long>2026-11-02</time></header><p>11 idiomas, con interfaz de derecha a izquierda en árabe.</p></article></li>
+      <li class="reveal" data-build="3" style="--d:0.24s"><span class="node">3</span><article class="card spot tl-card"><header><b>Build 3</b><time datetime="2026-11-02T02:09:59Z" data-long>2026-11-02</time></header><p>Actualizaciones que se descargan e instalan solas con root.</p></article></li>
+      <li class="reveal" data-build="2" style="--d:0.24s"><span class="node">2</span><article class="card spot tl-card"><header><b>Build 2</b><time datetime="2026-11-02T01:44:42Z" data-long>2026-11-02</time></header><p>Nuevo diseño al estilo de Windows 11, procesos agrupados y nuevas secciones.</p></article></li>
+      <li class="reveal" data-build="1" style="--d:0.24s"><span class="node">1</span><article class="card spot tl-card"><header><b>Build 1</b><time datetime="2026-11-01T23:13:43Z" data-long>2026-11-01</time></header><p>Primera versión: procesos, gráficas de rendimiento, batería, temperaturas y Wi‑Fi.</p></article></li>
       </ol>
       <button type="button" class="btn sm press more-btn" id="more" aria-expanded="false" aria-controls="timeline"><svg aria-hidden="true"><use href="#i-expand"/></svg><span>Ver todas las builds</span></button>
     </div>
@@ -1299,7 +1312,7 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
 <script>
 (function () {
   "use strict";
-  var T = {"copied": "Usuario de Discord copiado", "latest": "Última versión: build {b}, publicada el {d}.", "more": "Ver todas las builds", "less": "Ver menos"};
+  var T = {"copied": "Usuario de Discord copiado", "latest": "Última versión: build {b}, publicada el {d}.", "more": "Ver todas las builds", "less": "Ver menos", "tlNew": "Novedades en GitHub", "tlLatest": "Última"};
   var LANG = "es";
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -1867,6 +1880,37 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
     a.textContent = T.latest.replace("{b}", build).replace("{d}", fmtDate(rel.published_at, true));
     el.textContent = ""; el.appendChild(a);
     document.querySelectorAll("[data-live-build]").forEach(function (n) { n.textContent = build; });
+  }).catch(function () {});
+  function firstNote(body) {
+    var m = (body || "").split("\n").filter(function (l) { return /^\s*[-*] /.test(l); })[0];
+    return m ? m.replace(/^\s*[-*] /, "").trim() : "";
+  }
+  getJSON("https://api.github.com/repos/kevxngg/monitor-root/releases?per_page=30").then(function (list) {
+    var tl = $("timeline"), first = tl.querySelector("li[data-build]");
+    if (!first) return;
+    var known = +first.dataset.build;
+    var fresh = list.filter(function (r) { return !r.draft && !r.prerelease; })
+      .map(function (r) { return { b: parseInt(String(r.tag_name).replace("build-", ""), 10), r: r }; })
+      .filter(function (x) { return x.b > known; })
+      .sort(function (a, c) { return a.b - c.b; });
+    if (!fresh.length) return;
+    fresh.forEach(function (x) {
+      var li = first.cloneNode(true);
+      li.dataset.build = x.b; li.classList.add("in");
+      li.querySelector(".node").textContent = x.b;
+      li.querySelector("header b").textContent = "Build " + x.b;
+      var tm = li.querySelector("time");
+      tm.setAttribute("datetime", x.r.published_at); tm.textContent = fmtDate(x.r.published_at, true);
+      var p = li.querySelector("p"), note = LANG === "es" ? firstNote(x.r.body) : "";
+      p.textContent = "";
+      if (note) p.textContent = note;
+      else { var a = document.createElement("a"); a.href = x.r.html_url; a.textContent = T.tlNew; p.appendChild(a); }
+      tl.insertBefore(li, tl.firstChild);
+      first = li;
+    });
+    tl.querySelectorAll("header .tag").forEach(function (t) { t.remove(); });
+    var tag = document.createElement("span"); tag.className = "tag"; tag.textContent = T.tlLatest;
+    tl.querySelector("li header").appendChild(tag);
   }).catch(function () {});
   getJSON("https://api.github.com/users/kevxngg/repos?per_page=100&sort=pushed").then(function (repos) {
     repos.forEach(function (r) {

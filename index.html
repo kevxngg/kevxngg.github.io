@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kevin Hernández “El Señor” · Developer, cybersecurity and OSINT</title>
-<meta name="description" content="Kevin Hernández (kevxngg), known as “El Señor”. Developer for Android, web (PHP) and Python, focused on cybersecurity and OSINT tools. Creator of DomainInfo and Monitor.">
+<title>Kevin Hernández “The Lord” · Developer, cybersecurity and OSINT</title>
+<meta name="description" content="Kevin Hernández (kevxngg), known as “The Lord”. Developer for Android, web (PHP) and Python, focused on cybersecurity and OSINT tools. Creator of DomainInfo and Monitor.">
 <meta name="author" content="Kevin Hernández">
 <link rel="canonical" href="https://kevxngg.github.io/">
 <link rel="alternate" hreflang="en" href="https://kevxngg.github.io/">
@@ -37,7 +37,7 @@ document.documentElement.className = "js";
 })();
 </script>
 <meta property="og:type" content="profile">
-<meta property="og:title" content="Kevin Hernández “El Señor” (kevxngg)">
+<meta property="og:title" content="Kevin Hernández “The Lord” (kevxngg)">
 <meta property="og:description" content="Developer for Android, web and Python, focused on cybersecurity and OSINT. Creator of DomainInfo and Monitor.">
 <meta property="og:url" content="https://kevxngg.github.io/">
 <meta property="og:site_name" content="kevxngg">
@@ -56,7 +56,7 @@ document.documentElement.className = "js";
 <meta property="profile:last_name" content="Hernández">
 <meta property="profile:username" content="kevxngg">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kevin Hernández “El Señor” (kevxngg)">
+<meta name="twitter:title" content="Kevin Hernández “The Lord” (kevxngg)">
 <meta name="twitter:description" content="Developer for Android, web and Python, focused on cybersecurity and OSINT. Creator of DomainInfo and Monitor.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23117DBB'/%3E%3Ctext x='12' y='17' text-anchor='middle' font-family='Segoe UI,Arial,sans-serif' font-size='14' font-weight='700' fill='white'%3EK%3C/text%3E%3C/svg%3E">
 <script type="application/ld+json">
@@ -66,6 +66,7 @@ document.documentElement.className = "js";
   "name": "Kevin Hernández",
   "alternateName": [
     "El Señor",
+    "The Lord",
     "kevxngg"
   ],
   "url": "https://kevxngg.github.io/",
@@ -386,6 +387,7 @@ svg { max-width: 100%; }
   margin: 0 0 14px;
 }
 .w { display: inline-block; }
+[dir="rtl"] .hero h1 { direction: ltr; text-align: right; } /* Latin name keeps its word order in RTL */
 .js .w { opacity: 0; transform: translateY(0.35em); filter: blur(8px); animation: rise .9s var(--ease-out) forwards; animation-delay: calc(var(--i) * 70ms + 120ms); }
 @keyframes rise { to { opacity: 1; transform: none; filter: blur(0); } }
 .alias { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font-size: 18px; margin: 0 0 16px; color: rgba(255, 255, 255, 0.86); }
@@ -399,6 +401,10 @@ svg { max-width: 100%; }
   animation: shine 8s linear infinite;
 }
 @keyframes shine { to { background-position: 300% 0; } }
+.nick { direction: ltr; unicode-bidi: isolate; font-family: var(--mono); font-size: 17px; padding: 5px 12px; border-radius: 10px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); color: rgba(255, 255, 255, 0.85); }
+.nick .kw { color: #C586C0; }
+.nick .grad { font-weight: 600; }
+.nick .cm { color: rgba(255, 255, 255, 0.42); }
 .handle-chip { font-family: var(--mono); font-size: 13px; color: rgba(255, 255, 255, 0.7); padding: 2px 8px; border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 6px; }
 .summary { color: rgba(255, 255, 255, 0.7); margin: 0 0 26px; max-width: 52ch; font-size: 17px; }
 .js .fade-up { opacity: 0; transform: translateY(16px); animation: fadeUp .8s var(--ease-out) forwards; animation-delay: var(--d, .4s); }
@@ -964,7 +970,7 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
         <p class="fade-up" style="--d:.05s"><span class="chip"><span class="dot"></span><span>Monitor build <span data-live-build>21</span> available</span></span></p>
         <p class="role fade-up" style="--d:.1s">Developer · Android · Web · Python · Cybersecurity &amp; OSINT</p>
         <h1><span class="w" style="--i:0">Kevin</span> <span class="w" style="--i:1">Hernández</span></h1>
-        <p class="alias fade-up" style="--d:.35s"><span>Known as <span class="grad"><bdi>“El Señor”</bdi></span></span><span class="handle-chip"><bdi>@kevxngg</bdi></span></p>
+        <p class="alias fade-up" style="--d:.35s"><code class="nick"><span class="kw">alias</span> = <span class="grad">"<bdi>The Lord</bdi>"</span><span class="cm"> // El Señor</span></code><span class="handle-chip"><bdi>@kevxngg</bdi></span></p>
         <p class="summary fade-up" style="--d:.45s">I build apps for rooted Android in Kotlin, web applications in PHP and tools in Python, with a focus on cybersecurity and OSINT. My projects include DomainInfo, an OSINT tool for domain and IP reconnaissance, and Monitor, a Windows 11–style task manager for Android.</p>
         <div class="actions fade-up" style="--d:.55s">
           <a class="btn primary press magnet" href="#monitor"><svg aria-hidden="true"><use href="#i-monitor"/></svg>Explore Monitor</a>
@@ -1145,17 +1151,25 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
         <div class="cmd reveal"><a class="btn sm press" href="https://github.com/kevxngg/monitor-root/releases"><svg aria-hidden="true"><use href="#i-list"/></svg>All releases</a></div>
       </div>
       <ol class="timeline collapsed" id="timeline">
-      <li class="reveal" style="--d:0.00s"><span class="node">18</span><article class="card spot tl-card"><header><b>Build 18</b><time datetime="2026-11-03T02:49:01Z" data-long>2026-11-03</time></header><p>The app is renamed Monitor.</p></article></li>
-      <li class="reveal" style="--d:0.04s"><span class="node">17</span><article class="card spot tl-card"><header><b>Build 17</b><time datetime="2026-11-03T02:36:36Z" data-long>2026-11-03</time></header><p>New Games section: game mode and a per-session summary with average FPS, max temperature and battery used.</p></article></li>
-      <li class="reveal" style="--d:0.08s"><span class="node">15</span><article class="card spot tl-card"><header><b>Build 15</b><time datetime="2026-11-03T02:07:36Z" data-long>2026-11-03</time></header><p>Floating monitor with 5 layouts and color-coded FPS.</p></article></li>
-      <li class="reveal" style="--d:0.12s"><span class="node">14</span><article class="card spot tl-card"><header><b>Build 14</b><time datetime="2026-11-03T01:44:23Z" data-long>2026-11-03</time></header><p>Advanced CPU settings per cluster (governor and max frequency), plus GPU settings.</p></article></li>
-      <li class="reveal" style="--d:0.16s"><span class="node">13</span><article class="card spot tl-card"><header><b>Build 13</b><time datetime="2026-11-03T01:32:30Z" data-long>2026-11-03</time></header><p>Floating monitor over any app, plus a Quick Settings tile.</p></article></li>
-      <li class="reveal" style="--d:0.20s"><span class="node">12</span><article class="card spot tl-card"><header><b>Build 12</b><time datetime="2026-11-02T15:27:31Z" data-long>2026-11-02</time></header><p>MIT license and detailed diagnostics for update errors.</p></article></li>
-      <li class="reveal" style="--d:0.24s"><span class="node">6</span><article class="card spot tl-card"><header><b>Build 6</b><time datetime="2026-11-02T03:16:50Z" data-long>2026-11-02</time></header><p>The real GPU name on any phone, such as Mali-G57 MC2 or Adreno 610.</p></article></li>
-      <li class="reveal" style="--d:0.24s"><span class="node">4</span><article class="card spot tl-card"><header><b>Build 4</b><time datetime="2026-11-02T02:26:04Z" data-long>2026-11-02</time></header><p>11 languages, with a right-to-left interface in Arabic.</p></article></li>
-      <li class="reveal" style="--d:0.24s"><span class="node">3</span><article class="card spot tl-card"><header><b>Build 3</b><time datetime="2026-11-02T02:09:59Z" data-long>2026-11-02</time></header><p>Updates that download and install themselves with root.</p></article></li>
-      <li class="reveal" style="--d:0.24s"><span class="node">2</span><article class="card spot tl-card"><header><b>Build 2</b><time datetime="2026-11-02T01:44:42Z" data-long>2026-11-02</time></header><p>New Windows 11 design: sidebar, search and command bar.</p></article></li>
-      <li class="reveal" style="--d:0.24s"><span class="node">1</span><article class="card spot tl-card"><header><b>Build 1</b><time datetime="2026-11-01T23:13:43Z" data-long>2026-11-01</time></header><p>First version: process list with CPU and RAM usage, and ending tasks with root.</p></article></li>
+      <li class="reveal" data-build="21" style="--d:0.00s"><span class="node">21</span><article class="card spot tl-card"><header><b>Build 21</b><time datetime="2026-11-03T19:33:09Z" data-long>2026-11-03</time><span class="tag">Latest</span></header><p>Internal project cleanup; the app works just as before.</p></article></li>
+      <li class="reveal" data-build="19" style="--d:0.04s"><span class="node">19</span><article class="card spot tl-card"><header><b>Build 19</b><time datetime="2026-11-03T03:14:23Z" data-long>2026-11-03</time></header><p>Build maintenance, no changes to the app.</p></article></li>
+      <li class="reveal" data-build="18" style="--d:0.08s"><span class="node">18</span><article class="card spot tl-card"><header><b>Build 18</b><time datetime="2026-11-03T02:49:01Z" data-long>2026-11-03</time></header><p>The app is renamed Monitor.</p></article></li>
+      <li class="reveal" data-build="17" style="--d:0.12s"><span class="node">17</span><article class="card spot tl-card"><header><b>Build 17</b><time datetime="2026-11-03T02:36:36Z" data-long>2026-11-03</time></header><p>Games section with game mode and a summary of every session, alerts and GPU control on any processor.</p></article></li>
+      <li class="reveal" data-build="15" style="--d:0.16s"><span class="node">15</span><article class="card spot tl-card"><header><b>Build 15</b><time datetime="2026-11-03T02:07:36Z" data-long>2026-11-03</time></header><p>Floating monitor with 5 layouts and color-coded FPS, plus more reliable FPS measurement.</p></article></li>
+      <li class="reveal" data-build="14" style="--d:0.20s"><span class="node">14</span><article class="card spot tl-card"><header><b>Build 14</b><time datetime="2026-11-03T01:44:23Z" data-long>2026-11-03</time></header><p>Advanced CPU settings per cluster, GPU settings and a new floating monitor design.</p></article></li>
+      <li class="reveal" data-build="13" style="--d:0.24s"><span class="node">13</span><article class="card spot tl-card"><header><b>Build 13</b><time datetime="2026-11-03T01:32:30Z" data-long>2026-11-03</time></header><p>Floating monitor, Quick Settings tile, widget, battery history and power modes.</p></article></li>
+      <li class="reveal" data-build="12" style="--d:0.24s"><span class="node">12</span><article class="card spot tl-card"><header><b>Build 12</b><time datetime="2026-11-02T15:27:31Z" data-long>2026-11-02</time></header><p>MIT license and detailed diagnostics for update errors.</p></article></li>
+      <li class="reveal" data-build="11" style="--d:0.24s"><span class="node">11</span><article class="card spot tl-card"><header><b>Build 11</b><time datetime="2026-11-02T14:30:27Z" data-long>2026-11-02</time></header><p>Social links on the About page.</p></article></li>
+      <li class="reveal" data-build="10" style="--d:0.24s"><span class="node">10</span><article class="card spot tl-card"><header><b>Build 10</b><time datetime="2026-11-02T04:17:55Z" data-long>2026-11-02</time></header><p>New About page, new icon and an “Update now” button in the notification.</p></article></li>
+      <li class="reveal" data-build="9" style="--d:0.24s"><span class="node">9</span><article class="card spot tl-card"><header><b>Build 9</b><time datetime="2026-11-02T04:02:00Z" data-long>2026-11-02</time></header><p>Device information and update checks without GitHub&#x27;s request limit.</p></article></li>
+      <li class="reveal" data-build="8" style="--d:0.24s"><span class="node">8</span><article class="card spot tl-card"><header><b>Build 8</b><time datetime="2026-11-02T03:53:19Z" data-long>2026-11-02</time></header><p>Update alert as a notification, even when the app is closed.</p></article></li>
+      <li class="reveal" data-build="7" style="--d:0.24s"><span class="node">7</span><article class="card spot tl-card"><header><b>Build 7</b><time datetime="2026-11-02T03:28:10Z" data-long>2026-11-02</time></header><p>Battery current is shown the same way on every phone.</p></article></li>
+      <li class="reveal" data-build="6" style="--d:0.24s"><span class="node">6</span><article class="card spot tl-card"><header><b>Build 6</b><time datetime="2026-11-02T03:16:50Z" data-long>2026-11-02</time></header><p>Real GPU name on any phone and GPU data on MediaTek processors.</p></article></li>
+      <li class="reveal" data-build="5" style="--d:0.24s"><span class="node">5</span><article class="card spot tl-card"><header><b>Build 5</b><time datetime="2026-11-02T02:48:43Z" data-long>2026-11-02</time></header><p>Fake or stuck temperature sensors are ignored.</p></article></li>
+      <li class="reveal" data-build="4" style="--d:0.24s"><span class="node">4</span><article class="card spot tl-card"><header><b>Build 4</b><time datetime="2026-11-02T02:26:04Z" data-long>2026-11-02</time></header><p>11 languages, with a right-to-left interface in Arabic.</p></article></li>
+      <li class="reveal" data-build="3" style="--d:0.24s"><span class="node">3</span><article class="card spot tl-card"><header><b>Build 3</b><time datetime="2026-11-02T02:09:59Z" data-long>2026-11-02</time></header><p>Updates that download and install themselves with root.</p></article></li>
+      <li class="reveal" data-build="2" style="--d:0.24s"><span class="node">2</span><article class="card spot tl-card"><header><b>Build 2</b><time datetime="2026-11-02T01:44:42Z" data-long>2026-11-02</time></header><p>New Windows 11 design, grouped processes and new sections.</p></article></li>
+      <li class="reveal" data-build="1" style="--d:0.24s"><span class="node">1</span><article class="card spot tl-card"><header><b>Build 1</b><time datetime="2026-11-01T23:13:43Z" data-long>2026-11-01</time></header><p>First version: processes, performance graphs, battery, temperatures and Wi‑Fi.</p></article></li>
       </ol>
       <button type="button" class="btn sm press more-btn" id="more" aria-expanded="false" aria-controls="timeline"><svg aria-hidden="true"><use href="#i-expand"/></svg><span>Show all builds</span></button>
     </div>
@@ -1272,7 +1286,7 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
         <aside class="card tilt card-id reveal" style="--d:.08s">
           <div class="who">
             <span class="logo avatar" aria-hidden="true">K</span>
-            <div><h3>Kevin Hernández</h3><p><bdi>“El Señor”</bdi> · <bdi>@kevxngg</bdi></p></div>
+            <div><h3>Kevin Hernández</h3><p><bdi>“The Lord”</bdi> · <bdi>@kevxngg</bdi></p></div>
           </div>
           <dl>
             <div><dt>Role</dt><dd>Developer · Cybersecurity</dd></div>
@@ -1291,7 +1305,7 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
   <div class="foot">
     <div class="about-f">
       <a class="brand" href="#top"><span class="logo" aria-hidden="true">K</span><b>kevxngg</b></a>
-      <p>Personal site of Kevin Hernández, “El Señor”. Hand-written HTML with no frameworks and a design inspired by Windows 11.</p>
+      <p>Personal site of Kevin Hernández, “The Lord”. Hand-written HTML with no frameworks and a design inspired by Windows 11.</p>
     </div>
     <div>
       <h4>Sections</h4>
@@ -1306,7 +1320,7 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
       <ul><li><a href="https://t.me/kevxngg" rel="me">Telegram</a></li><li><a href="https://www.linkedin.com/in/kevxngg" rel="me">LinkedIn</a></li><li><a href="https://github.com/kevxngg" rel="me">GitHub</a></li></ul>
     </div>
   </div>
-  <div class="copy"><span>© <span id="year">2026</span> Kevin Hernández · <bdi>“El Señor”</bdi></span><a href="#top">Back to top</a></div>
+  <div class="copy"><span>© <span id="year">2026</span> Kevin Hernández · <bdi>“The Lord”</bdi></span><a href="#top">Back to top</a></div>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -1314,7 +1328,7 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
 <script>
 (function () {
   "use strict";
-  var T = {"copied": "Discord username copied", "latest": "Latest version: build {b}, released {d}.", "more": "Show all builds", "less": "Show fewer"};
+  var T = {"copied": "Discord username copied", "latest": "Latest version: build {b}, released {d}.", "more": "Show all builds", "less": "Show fewer", "tlNew": "What's new on GitHub", "tlLatest": "Latest"};
   var LANG = "en";
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -1882,6 +1896,37 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
     a.textContent = T.latest.replace("{b}", build).replace("{d}", fmtDate(rel.published_at, true));
     el.textContent = ""; el.appendChild(a);
     document.querySelectorAll("[data-live-build]").forEach(function (n) { n.textContent = build; });
+  }).catch(function () {});
+  function firstNote(body) {
+    var m = (body || "").split("\n").filter(function (l) { return /^\s*[-*] /.test(l); })[0];
+    return m ? m.replace(/^\s*[-*] /, "").trim() : "";
+  }
+  getJSON("https://api.github.com/repos/kevxngg/monitor-root/releases?per_page=30").then(function (list) {
+    var tl = $("timeline"), first = tl.querySelector("li[data-build]");
+    if (!first) return;
+    var known = +first.dataset.build;
+    var fresh = list.filter(function (r) { return !r.draft && !r.prerelease; })
+      .map(function (r) { return { b: parseInt(String(r.tag_name).replace("build-", ""), 10), r: r }; })
+      .filter(function (x) { return x.b > known; })
+      .sort(function (a, c) { return a.b - c.b; });
+    if (!fresh.length) return;
+    fresh.forEach(function (x) {
+      var li = first.cloneNode(true);
+      li.dataset.build = x.b; li.classList.add("in");
+      li.querySelector(".node").textContent = x.b;
+      li.querySelector("header b").textContent = "Build " + x.b;
+      var tm = li.querySelector("time");
+      tm.setAttribute("datetime", x.r.published_at); tm.textContent = fmtDate(x.r.published_at, true);
+      var p = li.querySelector("p"), note = LANG === "es" ? firstNote(x.r.body) : "";
+      p.textContent = "";
+      if (note) p.textContent = note;
+      else { var a = document.createElement("a"); a.href = x.r.html_url; a.textContent = T.tlNew; p.appendChild(a); }
+      tl.insertBefore(li, tl.firstChild);
+      first = li;
+    });
+    tl.querySelectorAll("header .tag").forEach(function (t) { t.remove(); });
+    var tag = document.createElement("span"); tag.className = "tag"; tag.textContent = T.tlLatest;
+    tl.querySelector("li header").appendChild(tag);
   }).catch(function () {});
   getJSON("https://api.github.com/users/kevxngg/repos?per_page=100&sort=pushed").then(function (repos) {
     repos.forEach(function (r) {
