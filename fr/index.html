@@ -1329,7 +1329,7 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
   function loop(now) {
     var dt = Math.min(0.05, (now - last) / 1000 || 0.016); last = now;
     var busy = false;
-    for (var i = 0; i < tasks.length; i++) if (tasks[i](dt, now)) busy = true;
+    for (var i = 0; i < tasks.length; i++) { try { if (tasks[i](dt, now)) busy = true; } catch (err) { if (window.console) console.error(err); } }
     if (busy) requestAnimationFrame(loop); else running = false;
   }
   function kick() { if (!running) { running = true; last = performance.now(); requestAnimationFrame(loop); } }
@@ -1456,6 +1456,7 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
   }
   var ap = { x: 0, y: 0, z: 0 };
   function drawGlobe(dt) {
+    if (!atlas.c) return;
     var Y = yaw + hoverX.x, P = pitch.x + hoverY.x;
     var cy = Math.cos(Y), sy = Math.sin(Y), cp = Math.cos(P), sp = Math.sin(P);
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
