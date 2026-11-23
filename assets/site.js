@@ -588,12 +588,14 @@
   });
 
   // ---------- Live data from GitHub (the page already has a snapshot) ----------
+  // Only links to this account's GitHub pages are accepted from the API
+  function ghUrl(u) { u = String(u || ""); return /^https:\/\/github\.com\/kevxngg\//.test(u) ? u : "https://github.com/kevxngg/monitor-root/releases"; }
   function getJSON(url) { return fetch(url).then(function (r) { if (!r.ok) throw new Error(); return r.json(); }); }
   getJSON("https://api.github.com/repos/kevxngg/monitor-root/releases/latest").then(function (rel) {
     if (!rel.tag_name || !rel.published_at) throw new Error();
     var build = rel.tag_name.replace("build-", "");
     var el = $("version"), a = document.createElement("a");
-    a.href = rel.html_url;
+    a.href = ghUrl(rel.html_url);
     a.textContent = T.latest.replace("{b}", build).replace("{d}", fmtDate(rel.published_at, true));
     el.textContent = ""; el.appendChild(a);
     document.querySelectorAll("[data-live-build]").forEach(function (n) { if (n.dataset.count) n.dataset.count = build; var v = (+build).toLocaleString(LANG); if (n.textContent !== v) n.textContent = v; });
@@ -621,7 +623,7 @@
       var p = li.querySelector("p"), note = LANG === "en" ? firstNote(x.r.body) : "";
       p.textContent = "";
       if (note) p.textContent = note;
-      else { var a = document.createElement("a"); a.href = x.r.html_url; a.textContent = T.tlNew; p.appendChild(a); }
+      else { var a = document.createElement("a"); a.href = ghUrl(x.r.html_url); a.textContent = T.tlNew; p.appendChild(a); }
       tl.insertBefore(li, tl.firstChild);
       first = li;
     });
