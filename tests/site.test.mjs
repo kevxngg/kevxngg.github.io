@@ -89,7 +89,9 @@ for (const lang of LANGS) {
 
 test("los datos en vivo actualizan build, repositorios e historial", async () => {
   const { page, ctx } = await open("es");
-  await page.waitForFunction(() => document.querySelector("[data-live-build]")?.textContent.includes("999"));
+  await page.evaluate(() => document.getElementById("kpis").scrollIntoView());
+  await page.waitForFunction(() => [...document.querySelectorAll("[data-live-build]")].every((n) => n.textContent === "999")
+    && [...document.querySelectorAll("[data-live-repos]")].every((n) => n.textContent === "9"), null, { timeout: 5000 });
   const r = await page.evaluate(() => ({
     builds: [...document.querySelectorAll("[data-live-build]")].map((n) => n.textContent),
     repos: [...document.querySelectorAll("[data-live-repos]")].map((n) => n.textContent),
@@ -153,6 +155,8 @@ test("con movimiento reducido no queda contenido oculto y no hay botón de pausa
   await page.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 400) { scrollTo(0, y); await new Promise((r) => setTimeout(r, 30)); } });
   const hidden = await page.evaluate(() => [...document.querySelectorAll(".reveal, .fade-up, .captions li")].filter((e) => getComputedStyle(e).opacity === "0").length);
   assert.equal(hidden, 0);
+  const moved = await page.evaluate(() => [...document.querySelectorAll(".hero .fade-up, .hero .w")].filter((e) => getComputedStyle(e).transform !== "none").length);
+  assert.equal(moved, 0, "el texto del hero queda desplazado con movimiento reducido");
   assert.equal(await page.isHidden("#pause-btn"), true);
   await ctx.close();
 });
@@ -183,4 +187,30 @@ test("el sitemap y robots apuntan a todas las páginas", async () => {
   const sm = await readFile(join(ROOT, "sitemap.xml"), "utf8");
   for (const l of LANGS) assert.ok(sm.includes(`<loc>https://kevxngg.github.io${pagePath(l)}</loc>`), l);
   assert.match(await readFile(join(ROOT, "robots.txt"), "utf8"), /Sitemap: https:\/\/kevxngg\.github\.io\/sitemap\.xml/);
+});
+
+test("la navegación marca la sección visible", async () => {
+  const { page, ctx } = await open("es");
+  await page.evaluate(() => document.getElementById("projects").scrollIntoView());
+  await page.waitForTimeout(400);
+  const r = await page.evaluate(() => {
+    const a = document.querySelector('.top-links [data-spy][aria-current]');
+    const other = document.querySelector('.top-links [data-spy]:not([aria-current])');
+    return { spy: a?.dataset.spy, on: a && getComputedStyle(a).backgroundColor, off: other && getComputedStyle(other).backgroundColor };
+  });
+  assert.equal(r.spy, "projects");
+  assert.notEqual(r.on, r.off, "el enlace activo no se distingue");
+  await ctx.close();
+});
+
+test("en pausa, las flechas del teclado siguen girando el globo", async () => {
+  const { page, ctx } = await open("es");
+  await page.waitForSelector("#globe.on");
+  await page.click("#pause-btn");
+  const a = await page.textContent("#h-rot");
+  await page.focus("#globe");
+  await page.keyboard.press("ArrowRight"); await page.keyboard.press("ArrowRight");
+  await page.waitForTimeout(100);
+  assert.notEqual(await page.textContent("#h-rot"), a);
+  await ctx.close();
 });

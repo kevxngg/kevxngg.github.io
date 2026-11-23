@@ -348,7 +348,12 @@
   hero.addEventListener("pointerleave", function () { hoverX.t = 0; hoverY.t = 0; kick(); });
   cv.tabIndex = 0;
   cv.addEventListener("keydown", function (e) {
-    if (e.key === "ArrowLeft" || e.key === "ArrowRight") { yawVel = (e.key === "ArrowLeft" ? -3 : 3); kick(); e.preventDefault(); }
+    if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+      var dir = e.key === "ArrowLeft" ? -1 : 1;
+      if (paused) { yaw += dir * 0.15; drawGlobe(0); if (hudT >= 0) $("h-rot").textContent = ((((yaw * 180 / Math.PI) % 360) + 360) % 360).toFixed(0) + "°"; }
+      else { yawVel = dir * 3; kick(); }
+      e.preventDefault();
+    }
   });
 
   if ("ResizeObserver" in window) new ResizeObserver(function () { resize(); }).observe(hero); else addEventListener("resize", resize);
@@ -461,7 +466,7 @@
     requestAnimationFrame(function f(t) {
       if (!t0) t0 = t;
       var k = Math.min(1, (t - t0) / 1400), e = 1 - Math.pow(1 - k, 4);
-      el.textContent = Math.round((+el.dataset.count || to) * e).toLocaleString(LANG);
+      el.textContent = Math.round((el.dataset.count !== undefined ? +el.dataset.count : to) * e).toLocaleString(LANG);
       if (k < 1) requestAnimationFrame(f);
     });
   }
