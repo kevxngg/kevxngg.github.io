@@ -780,7 +780,10 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
 .foot .about-f p { margin: 10px 0 0; color: var(--sub); max-width: 46ch; font-size: 13.5px; }
 .foot h4 { margin: 0 0 8px; font-size: 13px; color: var(--sub); font-weight: 600; }
 .foot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
-.foot a { color: var(--text); text-decoration: none; }
+.foot a { color: var(--text); text-decoration: none; display: inline-block; padding-block: 3px; }
+.skip { position: fixed; inset-inline-start: 12px; top: 12px; z-index: 1000; padding: 10px 14px; border-radius: 8px; background: var(--accent); color: #fff; font-weight: 600; text-decoration: none; transform: translateY(-160%); }
+.skip:focus-visible { transform: none; }
+main:focus { outline: none; }
 .foot a:hover { color: var(--accent); text-decoration: underline; }
 .copy { max-width: 1180px; margin: 0 auto; padding: 0 20px 28px; display: flex; flex-wrap: wrap; gap: 8px 16px; justify-content: space-between; font-size: 12.5px; color: var(--sub); }
 .copy a { color: var(--sub); }
@@ -850,6 +853,7 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
 </style>
 </head>
 <body>
+<a class="skip" href="#top">Aller au contenu</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -941,7 +945,7 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
   <a href="#contact" data-spy="contact"><svg aria-hidden="true"><use href="#i-chat"/></svg><span>Contact</span></a>
 </nav>
 
-<main id="top">
+<main id="top" tabindex="-1">
   <div class="hero" id="hero" data-section="top" data-dark>
     <div class="globe-wrap" id="globe-wrap">
       <div class="stars"></div>
@@ -972,8 +976,8 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
   <section class="numbers" aria-label="Accueil">
     <div class="wrap">
       <ul class="kpis reveal" id="kpis">
-        <li><b class="num" data-count="8">8</b><span>projets publics</span></li>
-        <li><b class="num" data-count="21">21</b><span>dernière build de Monitor</span></li>
+        <li><b class="num" data-count="9" data-live-repos>9</b><span>projets publics</span></li>
+        <li><b class="num" data-count="112" data-live-build>112</b><span>dernière build de Monitor</span></li>
         <li><b class="num" data-count="11">11</b><span>langues dans Monitor</span></li>
         <li><b class="num" data-count="9">9</b><span>langages dans mon code</span></li>
       </ul>
@@ -1185,6 +1189,8 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
           <thead><tr><th scope="col">Nom</th><th scope="col">Description</th><th scope="col">Langage</th><th scope="col">Mis à jour</th></tr></thead>
           <tbody>
           <tr><td class="name"><a href="https://github.com/kevxngg/monitor-root"><span class="pi"><svg aria-hidden="true"><use href="#i-monitor"/></svg></span>monitor-root<span class="tag">Projet phare</span></a></td><td class="desc">Gestionnaire des tâches pour Android rooté au style de Windows 11.</td><td class="meta"><span class="lang-dot"><i style="--c:#A97BFF"></i>Kotlin</span></td><td class="meta"><svg aria-hidden="true"><use href="#i-calendar"/></svg><time datetime="2026-11-03T05:35:20Z" data-repo="monitor-root">2026-11-03</time></td></tr>
+          <tr><td class="name"><a href="https://github.com/kevxngg/dolby-atmos-obsidian"><span class="pi"><svg aria-hidden="true"><use href="#i-repo"/></svg></span>dolby-atmos-obsidian<span class="tag">Audio</span></a></td><td class="desc">Débloque le Dolby Atmos intégré au système sur Android rooté : égaliseur en direct, basses, son surround et AutoEQ.</td><td class="meta"><span class="lang-dot"><i style="--c:#A97BFF"></i>Kotlin</span></td><td class="meta"><svg aria-hidden="true"><use href="#i-calendar"/></svg><time datetime="2026-11-18T17:17:59Z" data-repo="dolby-atmos-obsidian">2026-11-18</time></td></tr>
+          <tr><td class="name"><a href="https://github.com/kevxngg/spatial-audio-pro"><span class="pi"><svg aria-hidden="true"><use href="#i-repo"/></svg></span>spatial-audio-pro<span class="tag">Audio</span></a></td><td class="desc">Audio global pour Windows basé sur Equalizer APO : égaliseur paramétrique, spectre mesuré et son spatial binaural.</td><td class="meta"><span class="lang-dot"><i style="--c:#178600"></i>C#</span></td><td class="meta"><svg aria-hidden="true"><use href="#i-calendar"/></svg><time datetime="2026-11-22T17:21:17Z" data-repo="spatial-audio-pro">2026-11-22</time></td></tr>
           <tr><td class="name"><a href="https://github.com/kevxngg/domaininfo"><span class="pi"><svg aria-hidden="true"><use href="#i-repo"/></svg></span>domaininfo<span class="tag">OSINT</span></a></td><td class="desc">Diagnostic de domaines et d&#x27;IP pour Termux, Kali/Linux, macOS et Windows. Python portable et modules Bash.</td><td class="meta"><span class="lang-dot"><i style="--c:#89E051"></i>Shell</span></td><td class="meta"><svg aria-hidden="true"><use href="#i-calendar"/></svg><time datetime="2026-10-27T03:49:44Z" data-repo="domaininfo">2026-10-27</time></td></tr>
           <tr><td class="name"><a href="https://github.com/kevxngg/netscope"><span class="pi"><svg aria-hidden="true"><use href="#i-repo"/></svg></span>netscope</a></td><td class="desc">Diagnostic et visualisation réseau en temps réel : latence, bande passante et goulots d&#x27;étranglement.</td><td class="meta"><span class="lang-dot"><i style="--c:#3572A5"></i>Python</span></td><td class="meta"><svg aria-hidden="true"><use href="#i-calendar"/></svg><time datetime="2026-09-02T00:23:27Z" data-repo="netscope">2026-09-02</time></td></tr>
           <tr><td class="name"><a href="https://github.com/kevxngg/Cloudflare-containers"><span class="pi"><svg aria-hidden="true"><use href="#i-repo"/></svg></span>Cloudflare-containers</a></td><td class="desc">Documentation complète en espagnol sur Cloudflare Containers : configuration, Wrangler, tarifs, réseau et déploiement.</td><td class="meta"><span class="lang-dot"><i style="--c:#8B949E"></i>Documentation</span></td><td class="meta"><svg aria-hidden="true"><use href="#i-calendar"/></svg><time datetime="2026-08-31T16:21:15Z" data-repo="Cloudflare-containers">2026-08-31</time></td></tr>
@@ -1745,7 +1751,7 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
     requestAnimationFrame(function f(t) {
       if (!t0) t0 = t;
       var k = Math.min(1, (t - t0) / 1400), e = 1 - Math.pow(1 - k, 4);
-      el.textContent = Math.round(to * e).toLocaleString(LANG);
+      el.textContent = Math.round((+el.dataset.count || to) * e).toLocaleString(LANG);
       if (k < 1) requestAnimationFrame(f);
     });
   }
@@ -1880,7 +1886,7 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
     a.href = rel.html_url;
     a.textContent = T.latest.replace("{b}", build).replace("{d}", fmtDate(rel.published_at, true));
     el.textContent = ""; el.appendChild(a);
-    document.querySelectorAll("[data-live-build]").forEach(function (n) { n.textContent = build; });
+    document.querySelectorAll("[data-live-build]").forEach(function (n) { if (n.dataset.count) n.dataset.count = build; n.textContent = (+build).toLocaleString(LANG); });
   }).catch(function () {});
   function firstNote(body) {
     var m = (body || "").split("\n").filter(function (l) { return /^\s*[-*] /.test(l); })[0];
@@ -1902,7 +1908,7 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
       li.querySelector("header b").textContent = "Build " + x.b;
       var tm = li.querySelector("time");
       tm.setAttribute("datetime", x.r.published_at); tm.textContent = fmtDate(x.r.published_at, true);
-      var p = li.querySelector("p"), note = LANG === "es" ? firstNote(x.r.body) : "";
+      var p = li.querySelector("p"), note = LANG === "en" ? firstNote(x.r.body) : "";
       p.textContent = "";
       if (note) p.textContent = note;
       else { var a = document.createElement("a"); a.href = x.r.html_url; a.textContent = T.tlNew; p.appendChild(a); }
@@ -1914,6 +1920,8 @@ footer { border-top: 1px solid var(--line); margin-top: 24px; padding-bottom: ca
     tl.querySelector("li header").appendChild(tag);
   }).catch(function () {});
   getJSON("https://api.github.com/users/kevxngg/repos?per_page=100&sort=pushed").then(function (repos) {
+    var own = repos.filter(function (r) { return !r.fork && r.name !== "kevxngg" && r.name !== "kevxngg.github.io"; }).length;
+    document.querySelectorAll("[data-live-repos]").forEach(function (n) { n.dataset.count = own; n.textContent = own.toLocaleString(LANG); });
     repos.forEach(function (r) {
       var t = document.querySelector('time[data-repo="' + r.name + '"]');
       if (t && r.pushed_at) { t.setAttribute("datetime", r.pushed_at); t.textContent = fmtDate(r.pushed_at); }
