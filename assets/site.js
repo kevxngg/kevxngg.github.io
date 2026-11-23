@@ -523,52 +523,6 @@
     if (!open) tl.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" });
   });
 
-  // ---------- Animated Monitor screen (simulated values) ----------
-  var css = getComputedStyle(document.documentElement);
-  var mcv = $("cpu"), M = 40, cpu = [], v = 14;
-  for (var i = 0; i < M; i++) cpu.push(v);
-  function stepCpu() {
-    v += (Math.random() - 0.5) * 14;
-    if (Math.random() < 0.08) v += Math.random() * 40;
-    v = Math.max(3, Math.min(92, v * 0.9 + 14 * 0.1));
-    cpu.push(v); cpu.shift();
-  }
-  function drawCpu() {
-    var g = mcv.getContext("2d"), w = mcv.width, h = mcv.height, c = matchMedia("(prefers-color-scheme: dark)").matches ? "#60CDFF" : "#005FB8";
-    g.clearRect(0, 0, w, h);
-    g.strokeStyle = c; g.globalAlpha = 0.12; g.lineWidth = 1;
-    for (var y = 1; y < 6; y++) { var yy = Math.round(h * y / 6) + 0.5; g.beginPath(); g.moveTo(0, yy); g.lineTo(w, yy); g.stroke(); }
-    var sx = w / (M - 1);
-    g.beginPath();
-    cpu.forEach(function (p, i) { var x = i * sx, y = h - p / 100 * h; i ? g.lineTo(x, y) : g.moveTo(x, y); });
-    g.lineTo(w, h); g.lineTo(0, h); g.closePath();
-    var gr = g.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, c); gr.addColorStop(1, "transparent");
-    g.globalAlpha = 0.35; g.fillStyle = gr; g.fill();
-    g.globalAlpha = 1; g.beginPath();
-    cpu.forEach(function (p, i) { var x = i * sx, y = h - p / 100 * h; i ? g.lineTo(x, y) : g.moveTo(x, y); });
-    g.lineWidth = 3; g.lineJoin = "round"; g.stroke();
-  }
-  var ram = 46, gpu = 8, temp = 39, batt = 82, storyVisible = false;
-  function set(id, txt) { $(id).textContent = txt; }
-  function setBar(id, pct) { $(id).style.transform = "scaleX(" + Math.max(0, Math.min(1, pct / 100)) + ")"; }
-  function tickScreen() {
-    stepCpu();
-    ram = Math.max(40, Math.min(60, ram + (Math.random() - 0.5) * 2));
-    gpu = Math.max(2, Math.min(70, gpu * 0.8 + Math.random() * 12));
-    temp = Math.max(35, Math.min(46, temp + (Math.random() - 0.5) * 1.2));
-    var c = Math.round(cpu[M - 1]);
-    set("m-cpu", c + "%"); set("o-cpu", c + "%");
-    set("m-ram", Math.round(ram) + "%"); set("m-gpu", Math.round(gpu) + "%");
-    set("m-temp", Math.round(temp) + " °C"); set("o-temp", Math.round(temp) + "°C");
-    set("m-batt", batt + "%"); set("o-fps", 57 + Math.round(Math.random() * 3));
-    [0, 1, 2].forEach(function (k) { set("p" + k, (Math.random() * (3 - k) + 0.2).toFixed(1) + "%"); });
-    setBar("b-ram", ram); setBar("b-gpu", gpu); setBar("b-temp", (temp - 20) * 2.5); setBar("b-batt", batt);
-    drawCpu();
-  }
-  tickScreen();
-  if ("IntersectionObserver" in window) new IntersectionObserver(function (en) { storyVisible = en[0].isIntersecting; }).observe(story);
-  if (!reduce) setInterval(function () { if (storyVisible && pageVisible) tickScreen(); }, 1000);
-
   // ---------- Discord: copy the username ----------
   var toast = $("toast"), timer;
   function show(msg) {

@@ -102,6 +102,7 @@ for (const lang of LANGS) {
 test("los datos en vivo actualizan build, repositorios e historial", async () => {
   const { page, ctx } = await open("es");
   await page.evaluate(() => document.getElementById("kpis").scrollIntoView());
+  await page.waitForTimeout(1800); // el contador de las cifras tarda 1,4 s en llegar a su valor
   await page.waitForFunction(() => [...document.querySelectorAll("[data-live-build]")].every((n) => n.textContent === "999")
     && [...document.querySelectorAll("[data-live-repos]")].every((n) => n.textContent === "9"), null, { timeout: 5000 });
   const r = await page.evaluate(() => ({
