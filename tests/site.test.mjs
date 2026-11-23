@@ -79,12 +79,24 @@ for (const lang of LANGS) {
     await ctx.close();
   });
 
-  test(`${lang}: sin desbordamiento horizontal a 320 px`, async () => {
-    const { page, ctx } = await open(lang, { width: 320, height: 640 });
-    const over = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
-    assert.ok(over <= 0, `desborda ${over}px`);
-    await ctx.close();
-  });
+  // Con la fuente del sistema y con una más ancha (como DejaVu Sans en Linux o algunas de Android)
+  for (const font of ["", "Verdana, 'DejaVu Sans'"]) {
+    test(`${lang}: sin desbordamiento horizontal a 320 px${font ? " con fuente ancha" : ""}`, async () => {
+      const { page, ctx } = await open(lang, { width: 320, height: 640 });
+      if (font) { await page.addStyleTag({ content: `*{font-family:${font}!important}` }); await page.waitForTimeout(100); }
+      const r = await page.evaluate(() => ({
+        over: document.documentElement.scrollWidth - window.innerWidth,
+        culprits: [...document.querySelectorAll("body *")].filter((e) => {
+          const b = e.getBoundingClientRect();
+          if (!b.width || (b.right <= innerWidth + 0.5 && b.left >= -0.5) || getComputedStyle(e).position === "fixed") return false;
+          for (let a = e.parentElement; a && a !== document.body; a = a.parentElement) if (getComputedStyle(a).overflowX !== "visible") return false;
+          return true;
+        }).slice(0, 4).map((e) => `${e.tagName.toLowerCase()}.${String(e.className).split(" ")[0]}`),
+      }));
+      assert.ok(r.over <= 0, `desborda ${r.over}px: ${r.culprits.join(", ")}`);
+      await ctx.close();
+    });
+  }
 }
 
 test("los datos en vivo actualizan build, repositorios e historial", async () => {

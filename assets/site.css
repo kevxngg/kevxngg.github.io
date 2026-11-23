@@ -625,18 +625,18 @@ h2 {
 .procs-table td.meta svg { width: 14px; height: 14px; fill: var(--sub); }
 
 /* Technologies */
-.tech { display: grid; gap: 12px; grid-template-columns: 1fr; }
+.tech { display: grid; gap: 12px; grid-template-columns: minmax(0, 1fr); }
 .code-card, .tools-card { padding: 22px; }
 .code-card h3, .tools-card h3 { margin: 0 0 4px; font-size: 17px; font-weight: 600; }
 .code-card > p, .tools-card > p { margin: 0 0 16px; color: var(--sub); font-size: 13.5px; }
 .stack-bar { display: flex; height: 14px; border-radius: 7px; overflow: hidden; background: var(--hover); gap: 2px; }
 .stack-bar i { display: block; height: 100%; width: var(--w); background: var(--c); transform: scaleY(0); transition: transform .6s var(--ease-out); transition-delay: var(--d, 0s); }
 .code-card.in .stack-bar i { transform: none; }
-.legend { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; }
-.legend li { display: grid; grid-template-columns: 10px 1fr auto; gap: 8px; align-items: center; font-size: 13.5px; }
+.legend { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px; }
+.legend li { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 8px; align-items: center; font-size: 13.5px; }
 .legend i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
 .legend span { color: var(--sub); font-variant-numeric: tabular-nums; }
-.tools { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.tools { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .tools li { display: flex; align-items: center; gap: 10px; padding: 10px; border-radius: 12px; background: var(--panel); border: 1px solid var(--line); min-width: 0; }
 .tools .mono { width: 36px; height: 36px; border-radius: 10px; flex: none; display: grid; place-items: center; color: var(--t, #fff); font-weight: 700; font-size: 13px; background: var(--c); }
 .tools div { min-width: 0; }
@@ -802,9 +802,11 @@ h1, h2, h3 { text-wrap: balance; }
 .pause-btn:hover { border-color: rgba(255, 255, 255, 0.4); color: #fff; }
 .pause-btn svg { width: 14px; height: 14px; fill: currentColor; }
 .pause-btn[hidden] { display: none; }
-.asof { color: var(--sub); white-space: nowrap; }
+.asof { color: var(--sub); }
 .demo-note { margin: 6px 0 0; font-size: 13px; color: rgba(255, 255, 255, 0.6); }
 /* Halo, marco y HUD se muestran ya colocados (el JS es externo y puede llegar después de la primera pintura) */
 .hero:not(.placed) .atmo, .hero:not(.placed) .frame, .hero:not(.placed) .hud { visibility: hidden; }
 /* Con movimiento reducido el hero queda en su sitio (las reglas de arriba solo deslizan con movimiento) */
 @media (prefers-reduced-motion: reduce) { .js .hero .fade-up, .js .w { transform: none; } }
+/* Con fuentes anchas (Linux, Android) los nombres largos parten línea en vez de ensanchar la tarjeta */
+.tools li, .legend li { min-width: 0; overflow-wrap: anywhere; }
