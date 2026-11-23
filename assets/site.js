@@ -6,8 +6,13 @@
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
   var $ = function (id) { return document.getElementById(id); };
+  var dfLong = null, dfShort = null;
+  try {
+    dfLong = new Intl.DateTimeFormat(LANG, { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+    dfShort = new Intl.DateTimeFormat(LANG, { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
+  } catch (e) {}
   function fmtDate(iso, long) {
-    try { return new Date(iso).toLocaleDateString(LANG, long ? { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" } : { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }); }
+    try { return (long ? dfLong : dfShort).format(new Date(iso)); }
     catch (e) { return iso.slice(0, 10); }
   }
   $("year").textContent = new Date().getFullYear();
@@ -47,6 +52,7 @@
     if (open) { var cur = lm.querySelector('[aria-current="true"]'); if (cur) cur.focus(); }
   });
   document.addEventListener("click", function (e) { if (!lm.hidden && !lm.contains(e.target)) closeMenu(); });
+  lb.parentNode.addEventListener("focusout", function (e) { if (!lm.hidden && !lb.parentNode.contains(e.relatedTarget)) closeMenu(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !lm.hidden) { closeMenu(); lb.focus(); } });
   lm.querySelectorAll("a[data-lang]").forEach(function (a) {
     a.addEventListener("click", function () { try { localStorage.setItem("lang", a.dataset.lang); } catch (e) {} });
@@ -54,7 +60,7 @@
 
   // ---------- The world made of code ----------
   var hud = $("hud"), frame = $("frame"), hero = $("hero"), wrap = $("globe-wrap"), heroInner = $("hero-inner"), cv = $("globe"), ctx = cv.getContext("2d"), atmo = $("atmo");
-  var W = 0, H = 0, R = 100, CX = 0, CY = 0, DPR = 1, heroVisible = true, pageVisible = !document.hidden;
+  var W = 0, H = 0, R = 100, CX = 0, CY = 0, DPR = 1, heroVisible = true, pageVisible = !document.hidden, globeReady = false, bodyG = null, rimG = null, copyR = -1e9;
   var small = Math.min(innerWidth, innerHeight) < 700;
   var N = small ? 3000 : 5600;
   var MASK = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH/4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADf//8AAf///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB////D//////n/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/gf/x////////wAAAAAbgAAB4AAAAAAPwAAAAAAAAAAAAAAAAAAAAAAAAAAAf//8A///////+AAAAB/ngAAAAAAAAAAH8AAAAAAAAAAAAAAAAAAAAAAAAcH3Hv/5////////8AAAAA/gAAAAAAAAAAAAD4AAAAAAAAAAAAAAAAAAAAAAcIAAQP/AH///////+AAAAAPCAAAAAAAAAAAAAYAAAAAAAAAAAAAAAAAAAAADwDAc+f+AP///////4AAAAAAAAAAAAAB4AAAAB/8AAAAAAAAAAAAAAAAAAAAAH9wc374AAAf/////8AAAAAAAAAAAAH4AAAA////AAAB/gAAAAAAAAAAAAAAAAwAAA/QAAAH/////8AAAAAAAAAAAAOAAAAP///wAAAAAAAAAAAAAAAAAAAAP8AYe+c3AAAD/////4AAAAAAAAAAAA4AAAH////++HgAOAAAAAAAAAAAAAAAfv+4+w/4gAAB/////wAAAAAAAAAAADwAHgH///////4AfgAAAAAgAAAAAAAAPf/4O4//9AAB/////wAAAAAAAAAAADwAPb////////4m//gAAAAAAAf+AAAAAA/+A8f//4AB////8gAAAAAAA/gAAAAAfv/////////////8AAAAAB///+H//H/+PeDwf+AA3////AAAAAAA//4AAAA8fv///////////////P8gAf////////A4CPz4H8AAP///wAAAAAAD///wADH/n3/////////////////8AD////////////34Z/wA///4AAAAAAAP///+M////n/////////////////+4E/////////////gD/8Af//gAAAAAAAf//5+P////f/////////////////fw/////////////6AD8YAf/wAAf8AAAA/8f+D///////////////////////AgEf///////////zw7/AAP/gAAP4AAAB/4/+f//////////////////////8AMAf//////////+DIA/gAH/gAAAAAAAH/z/////////////////////////+AAH///////////8AwgOAAD+AAAAAAAA//H/////////////////////////6AAP///////////wAA/AAAB+AAAAAAAB/+H//////////////////////nP+AAAH//z////////wAA/wAAAOAAAAAAAB//D/////////////////////+A/4AAAA/zAD///////gAA/4wAAAAAAAAAAB//Ab///////////////////+eDgAAAAABwAA///////4AA/94AAAAAAAAAYA5+A///////////////////4AAHAAAAAADcAAD//////4AAf/8AAAAAAAAA8AC+C///////////////////wAAfgAAAAAMAAAA///////wAf/8AAAAAAAAA4AO8H///////////////////AAA/gAAAABgAAAA///////8A///AAAAAAAAA8ANwH//////////////////8AAB/AAAAAEAAAAAf///////z///4AAAAAAAHOAEDv//////////////////+AAA+AAAAAAAAAABH///////x///8AAAAAAAHHAf/////////////////////6AA8AAAAAAAAAAAD///////x///8AAAAAAAGPz//////////////////////6AAwAAAAAAAAAAAD///////9///6AAAAAAAAPj//////////////////////6AAQAAAAAAAAAAAC///////////EAAAAAAAAYf//////////////////////7AAAAAAAAAAAAAABv////////+MNAAAAAAAAD///////////////////////zAAAAAAAAAAAAAAAH////////7gfgAAAAAAAf///////////////////////yAAAAAAAAAAAAAAAL/////////gCgAAAAAAAH///////////////////////iAAAAAAAAAAAAAAAP/////////pAAAAAAAAAD/////uP////////////////DAAAAAAAAAAAAAAAP/////////+AAAAAAAAAB//v//Gf///////////////+AAAAAAAAAAAAAAAAP////////8wAAAAAAAAAB//H/+AP///////////////8CAAAAAAAAAAAAAAAP////////wAAAAAAAAADj/jz/8AD///////////////4HgAAAAAAAAAAAAAAP////////gAAAAAAAAAH/4Bw/8AA//////////////+APAAAAAAAAAAAAAAAP////////gAAAAAAAAAH/wA8f8Ph//////////////8AAAAAAAAAAAAAAAAAP///////8AAAAAAAAAAH/gMHfJ///////////////v4AMAAAAAAAAAAAAAAAP///////8AAAAAAAAAAH/AMCOP//////////////+JwAMAAAAAAAAAAAAAAAH///////4AAAAAAAAAAH/AAAHH//////////////8BwAIAAAAAAAAAAAAAAAH///////wAAAAAAAAAAH+AAYGH//////////////+w4A4AAAAAAAAAAAAAAAD///////wAAAAAAAAAAAgf+ACBs//////////////g4D4AAAAAAAAAAAAAAAB///////wAAAAAAAAAAAj/+AAAA//////////////AYf4AAAAAAAAAAAAAAAA///////gAAAAAAAAAAB//8AAAA//////////////Ah2AAAAAAAAAAAAAAAAAP/////+AAAAAAAAAAAD//+AAAB//////////////gDwAAAAAAAAAAAAAAAAAH/////8AAAAAAAAAAAH///4GAB//////////////gDAAAAAAAAAAAAAAAAAAG/////4AAAAAAAAAAAP///8P4h//////////////wCAAAAAAAAAAAAAAAAAACf////4AAAAAAAAAAAP////v////////////////gAAAAAAAAAAAAAAAAAAABP//hgYAAAAAAAAAAAP//////3//P///////////wAAAAAAAAAAAAAAAAAAAAv//AAYAAAAAAAAAAAf//////9//H///////////wAAAAAAAAAAAAAAAAAAAB3/+AAcAAAAAAAAAAB///////4//h///////////gAAAAAAAAAAAAAAAAAAAAR/+AANAAAAAAAAAAD///////8//wH//////////AAAAAAAAAAAAAAAAAAAAAJ/+AAEAAAAAAAAAAH///////+f/0B/////////+AAAAAAAAAAAAAAAAAAAAAI/8AAAAAAAAAAAAAH///////+f/44Af///////+QAAAAAAAAAAAAAAAAAAAAAf8AAAAAAAAAAAAAP////////H//+AP///////4gAAAAAAAAAAAAAAAAAAAAAP8AAuAAAAAAAAAAP////////H///AD///v///ggAAAAAAAAAAAAAAAAAAAAAH+AABgAAAAAAAAAf////////n//+AD//4P//YAAAAAAAAAAAAAAAAAAAAAAAP+A4AYAAAAAAAAAP////////j//+AAf/4H/+AAAAAAAAAAAAAAAAgAAAAAAAH/B4ABwAAAAAAAAP////////h//8AAf/gD/8YAAAAAAAAAAAAAAAAAAAAAAAD/nwAD9AAAAAAAAP////////x//4AAf/AD/8QAAAAAAAAAAAAAAAAAAAAAAAAf/wAAAAAAAAAAAP////////4//gAAf+AD/+AAwAAAAAAAAAAAAAAAAAAAAAAH/wAAAAAAAAAAAf////////4f+AAAf8AD//AAwAAAAAAAAAAAAAAAAAAAAAAAH/AAAAAAAAAAAf////////8f8AAAPwAAP/gAwAAAAAAAAAAAAAAAAAAAAAAAD/gAAAAAAAAAAf////////+fgAAAPwAAP/gAwAAAAAAAAAAAAAAAAAAAAAAAA/AAAAAAAAAAAf/////////eAAAAHwAAP/gAMAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAAAAAAAf/////////gAAAAHwAAM/gACAAAAAAAAAAAAAAAAAAAAAAAADABAAAAAAAAAP/////////gYAAADwAAEfgAJAAAAAAAAAAAAAAAAAAAAAAAADgPfOAAAAAAAH/////////34AAADwAAIOABAAAAAAAAAAAAAAAAAAAAAAAAAAyPf+AAAAAAAD//////////4AAADoAAIEACBAAAAAAAAAAAAAAAAAAAAAAAAA8///AAAAAAAB//////////wAAABIAAMAAAFAAAAAAAAAAAAAAAAAAAAAAAAAE///gAAAAAAB//////////wAAAAMAAEAAALgAAAAAAAAAAAAAAAAAAAAAAAAAf//wAAAAAAAf/////////gAAAAMAADAAMCAAAAAAAAAAAAAAAAAAAAAAAAAA////gAAAAAAP/B///////gAAAAAAADgAOAAAAAAAAAAAAAAAAAAAAAAAAAAAf///wAAAAAACAA///////AAAAAAAAxgA+AAAAAAAAAAAAAAAAAAAAAAAAAAAf///4AAAAAAAAAD/////+AAAAAAAAZgB4AAAAAAAAAAAAAAAAAAAAAAAAAAB////4AAAAAAAAAD/////8AAAAAAAAMwH8AAAAAAAAAAAAAAAAAAAAAAAAAAB////8AAAAAAAAAH/////4AAAAAAAAHQf8AIAAAAAAAAAAAAAAAAAAAAAAAAD////8AAAAAAAAAH/////gAAAAAAAAHgf88IAAAAAAAAAAAAAAAAAAAAAAAAD////+AAAAAAAAAH/////AAAAAAAAADwf8AAgAAAAAAAAAAAAAAAAAAAAAAAH/////4AAAAAAAAH/////AAAAAAAAABwP5wBwAAAAAAAAAAAAAAAAAAAAAAAH/////6AAAAAAAAD////+AAAAAAAAAB8P5wATwAAAAAAAAAAAAAAAAAAAAAAD//////4AAAAAAAB////8AAAAAAAAAA8AxQif+AAAAAAAAAAAAAAAAAAAAAAH//////8AAAAAAAB////4AAAAAAAAAAcAAIAD/gAAAAAAAAAAAAAAAAAAAAAH///////gAAAAAAA////4AAAAAAAAAAMAAIAI/ywAAAAAAAAAAAAAAAAAAAAH///////gAAAAAAA////4AAAAAAAAAADgAAAI/8BAAAAAAAAAAAAAAAAAAAAD///////gAAAAAAAf///4AAAAAAAAAAB+AAAA/4AIAAAAAAAAAAAAAAAAAAAB///////gAAAAAAAf///4AAAAAAAAAAAAmogAOMAAAAAAAAAAAAAAAAAAAAAB///////AAAAAAAAf///8AAAAAAAAAAAABCAAAGADAAAAAAAAAAAAAAAAAAAA///////AAAAAAAAf///8AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAf/////+AAAAAAAAP///8AAAAAAAAAAAAAAAgCAAAAAAAAAAAAAAAAAAAAAAAf/////8AAAAAAAAf///+AQAAAAAAAAAAAAB+CAAAAAAAAAAAAAAAAAAAAAAAP/////4AAAAAAAAf///+AQAAAAAAAAAAAAD8DAAAAAAAAAAAAAAAAAAAAAAAP/////4AAAAAAAA////+AwAAAAAAAAAAAA38DgAAAAAAAAAAAAAAAAAAAAAAH/////4AAAAAAAA////8BwAAAAAAAAAAAD/8DgAAAAAAAAAAAAAAAAAAAAAAB/////4AAAAAAAA////8PwAAAAAAAAAAAD//HwAABABAAAAAAAAAAAAAAAAAAf////4AAAAAAAA////wPgAAAAAAAAAAAP//3wAAAACAAAAAAAAAAAAAAAAAAP////wAAAAAAAA////APgAAAAAAAAAAAP///wAAAAAAAAAAAAAAAAAAAAAAAP////wAAAAAAAAf//+APgAAAAAAAAAAAf///4AAAAAAAAAAAAAAAAAAAAAAAP////wAAAAAAAAf//+APgAAAAAAAAAAD////+AAIAAAAAAAAAAAAAAAAAAAAP////gAAAAAAAAP//+AfAAAAAAAAAAAf////+AAEAAAAAAAAAAAAAAAAAAAAP////AAAAAAAAAP///AfAAAAAAAAAAA//////AAAAAAAAAAAAAAAAAAAAAAAP///4AAAAAAAAAP//+APAAAAAAAAAAA//////gAAAAAAAAAAAAAAAAAAAAAAf///gAAAAAAAAAH//+AOAAAAAAAAAAB//////wAAAAAAAAAAAAAAAAAAAAAAf///AAAAAAAAAAH//4AEAAAAAAAAAAA//////4AAAAAAAAAAAAAAAAAAAAAAf//+AAAAAAAAAAH//4AAAAAAAAAAAAB//////4AAAAAAAAAAAAAAAAAAAAAAf//+AAAAAAAAAAH//4AAAAAAAAAAAAA//////4AAAAAAAAAAAAAAAAAAAAAAf//+AAAAAAAAAAD//wAAAAAAAAAAAAAf/////8AAAAAAAAAAAAAAAAAAAAAAf//8AAAAAAAAAAB//gAAAAAAAAAAAAAf/////4AAAAAAAAAAAAAAAAAAAAAA///8AAAAAAAAAAB//gAAAAAAAAAAAAAf/////4AAAAAAAAAAAAAAAAAAAAAA///4AAAAAAAAAAA//AAAAAAAAAAAAAAP/////4AAAAAAAAAAAAAAAAAAAAAAf//wAAAAAAAAAAA/+AAAAAAAAAAAAAAP/AP//wAAAAAAAAAAAAAAAAAAAAAA///gAAAAAAAAAAA/4AAAAAAAAAAAAAAf8AG//gAAAAAAAAAAAAAAAAAAAAAA//3AAAAAAAAAAAAYAAAAAAAAAAAAAAAOAAF//gAAAAAAAAAAAAAAAAAAAAAB//4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//AAABAAAAAAAAAAAAAAAAAAB//4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/AAAAgAAAAAAAAAAAAAAAAAD//4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/AAAAQAAAAAAAAAAAAAAAAAB//gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYAAAAcAAAAAAAAAAAAAAAAAB/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAAAAD/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAAAD/gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcAAADQAAAAAAAAAAAAAAAAAD/4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcAAAHAAAAAAAAAAAAAAAAAAB/gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAOAAAAAAAAAAAAAAAAAAD/gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAAAAAH+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAAAAAH+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAH/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH4BwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAAAAAH4AAAAAAB4HgAD8AAAAAAAAAAAAAAAAAAAAAAAAADgAAAAAAAAAAAAAAAAAA//AAAD//////////wAAAAAAAAAAAAAAAAAAAAAAADgAAAAAAAAAAAAAAAAAf///4Af///////////AAAAAAAAAAAAAAAAAAAAAAAz4AAAAAAAAAAAAAAAPz////8B/////////////wAAAAAAAAAAAAAAAAAAAAA78AAAAAAAAAAA8/8///////wf/////////////+AAAAAAAAAAAAAAAAAAAAH9+AAAAAAAAZ////////////w////////////////4AAAAAAAAAAAAAAAAAAAB+AAAAAAAB//////////////////////////////4AAAAAAAAABmAAB8f+HB/+AAAAAAAP//////////////////////////////gAAAAAAAAP/c/oAf/////4AAAAAAAP/////////////////////////////8AAAAAAAD/////////////gAAAAAAB//////////////////////////////wAAAAAAAD////////////wAAAAAAP///////////////////////////////wAAAAAD/////////////4AAAAAAD////////////////////////////////wAAAADh/////////////AAAAB8A/////////////////////////////////+AAAAA4Af///////////gAAAH+AA///////////////////////////////+AAAAAAAAH///////////+A/A/wAA///////////////////////////////8AAAAAAAf//////////////gAAAf////////////////////////////////+AAAAAAAH///////////////h////////////////////////////////////wAAAAAAP/////////////////////////////////////////////////////gA+/gAAH///////////////////////////////////////////////gAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
@@ -113,7 +119,7 @@
   var ringA = 0, arcs = [], dragging = false, hist = [], lastPX = 0, lastPY = 0, pitchRaw = -0.32;
   function resize() {
     var rect = hero.getBoundingClientRect();
-    W = rect.width; H = rect.height; DPR = Math.min(2, window.devicePixelRatio || 1);
+    W = rect.width; H = rect.height; DPR = Math.min(W < 900 ? 1.5 : 2, window.devicePixelRatio || 1);
     cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
     var wide = W >= 900;
     // Phones: the planet rises below the text like a horizon, so nothing covers the copy
@@ -131,6 +137,17 @@
     var fr = R * 1.5;
     frame.style.left = (CX - fr) + "px"; frame.style.top = (CY - fr) + "px"; frame.style.width = frame.style.height = (fr * 2) + "px";
     hud.style.left = Math.min(W - 190, CX + R * 0.95) + "px"; hud.style.top = (CY + R * 0.7) + "px";
+    hero.classList.add("placed");
+    // Labels fade out before they reach the text column
+    copyR = wide ? document.querySelector(".hero-copy").getBoundingClientRect().right - rect.left + 24 : -1e9;
+    bodyG = ctx.createRadialGradient(CX - R * 0.35, CY - R * 0.4, R * 0.1, CX, CY, R * 1.04);
+    bodyG.addColorStop(0, "rgba(20, 52, 90, 0.6)");
+    bodyG.addColorStop(0.8, "rgba(7, 16, 32, 0.6)");
+    bodyG.addColorStop(0.97, "rgba(40, 110, 170, 0.35)");
+    bodyG.addColorStop(1, "rgba(96, 205, 255, 0.5)");
+    rimG = ctx.createRadialGradient(CX, CY, R * 1.0, CX, CY, R * 1.12);
+    rimG.addColorStop(0, "rgba(96, 205, 255, 0.18)"); rimG.addColorStop(1, "rgba(96, 205, 255, 0)");
+    if (!globeReady) return;
     makeAtlas();
     drawGlobe(0);
   }
@@ -164,12 +181,7 @@
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     ctx.clearRect(0, 0, W, H);
     // Planet body: dark sphere with a lit rim so it reads as solid
-    var body = ctx.createRadialGradient(CX - R * 0.35, CY - R * 0.4, R * 0.1, CX, CY, R * 1.04);
-    body.addColorStop(0, "rgba(20, 52, 90, 0.6)");
-    body.addColorStop(0.8, "rgba(7, 16, 32, 0.6)");
-    body.addColorStop(0.97, "rgba(40, 110, 170, 0.35)");
-    body.addColorStop(1, "rgba(96, 205, 255, 0.5)");
-    ctx.globalAlpha = 1; ctx.fillStyle = body;
+    ctx.globalAlpha = 1; ctx.fillStyle = bodyG;
     ctx.beginPath(); ctx.arc(CX, CY, R * 1.035, 0, 6.2832); ctx.fill();
     // Ocean dots and back glyphs first, front glyphs on top
     ctx.fillStyle = "#9fd3ff";
@@ -228,9 +240,7 @@
       ctx.beginPath(); ctx.arc(tmp.x, tmp.y, 3 + P2.t * R * 0.06, 0, 6.283); ctx.stroke();
     }
     // Rim light
-    var rim = ctx.createRadialGradient(CX, CY, R * 1.0, CX, CY, R * 1.12);
-    rim.addColorStop(0, "rgba(96, 205, 255, 0.18)"); rim.addColorStop(1, "rgba(96, 205, 255, 0)");
-    ctx.globalAlpha = 1; ctx.fillStyle = rim;
+    ctx.globalAlpha = 1; ctx.fillStyle = rimG;
     ctx.beginPath(); ctx.arc(CX, CY, R * 1.12, 0, 6.2832); ctx.arc(CX, CY, R * 1.0, 0, 6.2832, true); ctx.fill();
     // Orbit ring with stack labels
     ringA += dt * 0.12;
@@ -247,7 +257,9 @@
         var dx2 = tmp.x - CX, dy2 = tmp.y - CY;
         if (!front && dx2 * dx2 + dy2 * dy2 < R * R * 1.05) continue;
         var tw = ctx.measureText(LABELS[li]).width + 16, th = Math.max(18, R * 0.1);
-        ctx.globalAlpha = front ? 0.95 : 0.35;
+        var fade = Math.min(1, Math.max(0, (tmp.x - tw / 2 - copyR) / 60));
+        if (fade <= 0) continue;
+        ctx.globalAlpha = (front ? 0.95 : 0.35) * fade;
         ctx.fillStyle = "rgba(10, 16, 28, 0.78)"; ctx.strokeStyle = "rgba(96, 205, 255, 0.45)"; ctx.lineWidth = 1;
         ctx.beginPath();
         if (ctx.roundRect) ctx.roundRect(tmp.x - tw / 2, tmp.y - th / 2, tw, th, th / 2); else ctx.rect(tmp.x - tw / 2, tmp.y - th / 2, tw, th);
@@ -262,8 +274,20 @@
     }
     ctx.globalAlpha = 1;
   }
+  var paused = false, pb = $("pause-btn");
+  if (pb) {
+    if (reduce) pb.hidden = true;
+    pb.addEventListener("click", function () {
+      paused = !paused;
+      document.documentElement.classList.toggle("paused", paused);
+      pb.setAttribute("aria-pressed", String(paused));
+      pb.querySelector("span").textContent = paused ? (T.play || "Play") : (T.pause || "Pause");
+      pb.querySelector("use").setAttribute("href", paused ? "#i-play" : "#i-pause");
+      if (!paused) kick();
+    });
+  }
   var globeTask = function (dt) {
-    if (!heroVisible || !pageVisible) return false;
+    if (!globeReady || !heroVisible || !pageVisible || (paused && !dragging)) return false;
     if (!dragging) {
       yawVel = AUTO + (yawVel - AUTO) * Math.pow(0.997, dt * 1000);
       yaw += yawVel * dt;
@@ -274,7 +298,7 @@
     if (dt > 0) { fpsAcc += dt; fpsN++; hudT += dt; }
     if (hudT > 0.5 && hud.offsetParent) {
       hudT = 0;
-      $("h-fps").textContent = Math.round(fpsN / fpsAcc); fpsAcc = 0; fpsN = 0;
+      fpsAcc = 0; fpsN = 0;
       $("h-links").textContent = linksMade.toLocaleString(LANG);
       $("h-rot").textContent = ((((yaw * 180 / Math.PI) % 360) + 360) % 360).toFixed(0) + "°";
     }
@@ -296,7 +320,7 @@
     if (dragging) {
       var dx = e.clientX - lastPX, dy = e.clientY - lastPY;
       lastPX = e.clientX; lastPY = e.clientY;
-      yaw += dx / R * (DIRX);
+      yaw += dx / R;
       pitchRaw += dy / R;
       var lim = 0.7, over = Math.abs(pitchRaw) > lim ? pitchRaw - Math.sign(pitchRaw) * lim : 0;
       pitch.x = over ? Math.sign(pitchRaw) * lim + rubber(over, 1) : pitchRaw;
@@ -315,7 +339,7 @@
     dragging = false; cv.classList.remove("drag");
     var a = hist[0], b = hist[hist.length - 1], dtm = Math.max(16, b.t - a.t);
     var vx = (b.x - a.x) / dtm * 1000, vy = (b.y - a.y) / dtm * 1000;
-    yawVel = reduce ? 0 : Math.max(-9, Math.min(9, vx / R * (DIRX)));
+    yawVel = reduce ? 0 : Math.max(-9, Math.min(9, vx / R));
     pitch.t = -0.32; pitch.v = reduce ? 0 : vy / R;
     kick();
   }
@@ -330,6 +354,10 @@
   if ("ResizeObserver" in window) new ResizeObserver(function () { resize(); }).observe(hero); else addEventListener("resize", resize);
   resize();
   $("h-nodes").textContent = N.toLocaleString(LANG);
+  // The globe starts once the page has painted, so it never delays the text
+  function startGlobe() { if (globeReady) return; globeReady = true; resize(); cv.classList.add("on"); kick(); }
+  function afterLoad() { (window.requestIdleCallback || function (f) { setTimeout(f, 200); })(startGlobe, { timeout: 1500 }); }
+  if (document.readyState === "complete") afterLoad(); else addEventListener("load", afterLoad);
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(function (en) { heroVisible = en[0].isIntersecting; if (heroVisible) kick(); }).observe(hero);
   }
@@ -356,7 +384,7 @@
     var cur = "top", mid = innerHeight * 0.4;
     secs.forEach(function (s) { if (s.getBoundingClientRect().top <= mid) cur = s.dataset.section; });
     if (h > 0 && y >= h - 4) cur = "contact";
-    spyLinks.forEach(function (a) { if (a.dataset.spy === cur) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
+    spyLinks.forEach(function (a) { if (a.dataset.spy === cur) a.setAttribute("aria-current", "location"); else a.removeAttribute("aria-current"); });
     storyScroll();
   }
   addEventListener("scroll", onScroll, { passive: true });
@@ -568,7 +596,7 @@
     a.href = rel.html_url;
     a.textContent = T.latest.replace("{b}", build).replace("{d}", fmtDate(rel.published_at, true));
     el.textContent = ""; el.appendChild(a);
-    document.querySelectorAll("[data-live-build]").forEach(function (n) { if (n.dataset.count) n.dataset.count = build; n.textContent = (+build).toLocaleString(LANG); });
+    document.querySelectorAll("[data-live-build]").forEach(function (n) { if (n.dataset.count) n.dataset.count = build; var v = (+build).toLocaleString(LANG); if (n.textContent !== v) n.textContent = v; });
   }).catch(function () {});
   function firstNote(body) {
     var m = (body || "").split("\n").filter(function (l) { return /^\s*[-*] /.test(l); })[0];

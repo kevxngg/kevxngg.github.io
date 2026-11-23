@@ -26,6 +26,10 @@
 <meta property="og:description" content="Android、Web 和 Python 开发者，专注于网络安全与 OSINT。DomainInfo 和 Monitor 的作者。">
 <meta property="og:url" content="https://kevxngg.github.io/zh/">
 <meta property="og:site_name" content="kevxngg">
+<meta property="og:image" content="https://kevxngg.github.io/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kevin Hernández 「领主」 (kevxngg)">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:locale:alternate" content="es_ES">
@@ -40,10 +44,13 @@
 <meta property="profile:first_name" content="Kevin">
 <meta property="profile:last_name" content="Hernández">
 <meta property="profile:username" content="kevxngg">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kevxngg.github.io/assets/og.jpg">
+<meta name="twitter:image:alt" content="Kevin Hernández 「领主」 (kevxngg)">
 <meta name="twitter:title" content="Kevin Hernández 「领主」 (kevxngg)">
 <meta name="twitter:description" content="Android、Web 和 Python 开发者，专注于网络安全与 OSINT。DomainInfo 和 Monitor 的作者。">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23117DBB'/%3E%3Ctext x='12' y='17' text-anchor='middle' font-family='Segoe UI,Arial,sans-serif' font-size='14' font-weight='700' fill='white'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -128,6 +135,8 @@
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></symbol>
     <symbol id="i-android" viewBox="0 0 24 24"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24a11.43 11.43 0 0 0-8.94 0L5.65 5.67c-.19-.29-.58-.38-.87-.2-.28.18-.37.54-.22.83L6.4 9.48A10.78 10.78 0 0 0 1 18h22a10.78 10.78 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></symbol>
     <symbol id="i-search" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.6-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14z"/></symbol>
     <symbol id="i-hand" viewBox="0 0 24 24"><path d="M13 24c-3.26 0-6.19-1.99-7.4-5.02l-3.03-7.61a1 1 0 0 1 1.3-1.31l.79.27a2.5 2.5 0 0 1 1.56 1.47L7.25 15H8V3.25a2.25 2.25 0 0 1 4.5 0V10h1V1.25a2.25 2.25 0 0 1 4.5 0V10h1V3.75a2.25 2.25 0 0 1 4.5 0V16a8 8 0 0 1-8 8z"/></symbol>
     <symbol id="i-list" viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></symbol>
     <symbol id="i-expand" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></symbol>
@@ -147,7 +156,7 @@
     <div class="tb-right">
       <a class="icon-btn" href="https://github.com/kevxngg" rel="me" aria-label="GitHub"><svg aria-hidden="true"><use href="#i-github"/></svg></a>
       <div class="lang">
-        <button type="button" id="lang-btn" aria-haspopup="true" aria-expanded="false" aria-controls="lang-menu" aria-label="语言: 中文">
+        <button type="button" id="lang-btn" aria-expanded="false" aria-controls="lang-menu" aria-label="语言: 中文">
           <svg aria-hidden="true"><use href="#i-globe"/></svg><span>中文</span>
         </button>
         <ul id="lang-menu" hidden>
@@ -184,14 +193,15 @@
       <canvas id="globe" role="img" aria-label="拖动这个世界: Kotlin, Magisk, KernelSU, Jetpack Compose, AOSP, root, adb, su"></canvas>
     </div>
     <div class="frame" id="frame" aria-hidden="true"><i></i><b>WORLD.render()</b></div>
-    <div class="hud" id="hud" aria-hidden="true"><span>FPS <b id="h-fps">60</b></span><span>节点 <b id="h-nodes">0</b></span><span>连接 <b id="h-links">0</b></span><span>ROT <b id="h-rot">0°</b></span></div>
+    <div class="hud" id="hud" aria-hidden="true"><span>节点 <b id="h-nodes">0</b></span><span>连接 <b id="h-links">0</b></span><span>ROT <b id="h-rot">0°</b></span></div>
     <div class="hero-inner" id="hero-inner">
       <div class="hero-copy">
-        <p class="fade-up" style="--d:.05s"><span class="chip"><span class="dot"></span><span>Monitor build <span data-live-build>21</span> 已发布</span></span></p>
+        <p class="fade-up" style="--d:.05s"><span class="chip"><span class="dot"></span><span>Monitor build <span data-live-build>112</span> 已发布</span></span></p>
         <p class="role fade-up" style="--d:.1s">开发者 · Android · Web · Python · 网络安全与 OSINT</p>
         <h1><span class="w" style="--i:0">Kevin</span> <span class="w" style="--i:1">Hernández</span></h1>
         <p class="alias fade-up" style="--d:.35s"><code class="nick"><span class="kw">alias</span> = <span class="grad">"<bdi>领主</bdi>"</span><span class="cm"> // El Señor</span></code><span class="handle-chip"><bdi>@kevxngg</bdi></span></p>
-        <p class="summary fade-up" style="--d:.45s">我用 Kotlin 开发已 Root Android 应用，用 PHP 开发 Web 应用，用 Python 编写工具，专注于网络安全与 OSINT。我的项目包括 DomainInfo（一款用于域名和 IP 侦察的 OSINT 工具）和 Monitor（一款 Windows 11 风格的 Android 任务管理器）。</p>
+        <p class="summary fade-up" style="--d:.45s">我用 Kotlin 开发面向已 root Android 的应用，用 Python 编写网络安全和 OSINT 工具，并用 PHP 开发 Web 应用。</p>
+        <ul class="hero-projects fade-up" style="--d:.5s" aria-label="项目"><li><a href="#monitor"><b>Monitor</b><span>Android 任务管理器</span></a></li><li><a href="https://github.com/kevxngg/dolby-atmos-obsidian"><b>Dolby Atmos</b><span>已 root Android 的杜比音效</span></a></li><li><a href="https://github.com/kevxngg/domaininfo"><b>DomainInfo</b><span>域名 OSINT 侦察</span></a></li><li><a href="https://github.com/kevxngg/spatial-audio-pro"><b>Spatial Audio Pro</b><span>Windows 空间音频</span></a></li></ul>
         <div class="actions fade-up" style="--d:.55s">
           <a class="btn primary press magnet" href="#monitor"><svg aria-hidden="true"><use href="#i-monitor"/></svg>了解 Monitor</a>
           <a class="btn glass press magnet" href="#contact"><svg aria-hidden="true"><use href="#i-chat"/></svg>联系我</a>
@@ -199,12 +209,12 @@
       </div>
       <div class="hero-foot fade-up" style="--d:.9s">
         <span class="hint" id="hint"><svg aria-hidden="true"><use href="#i-hand"/></svg>拖动这个世界</span>
-        <span class="cue" aria-hidden="true"><i></i></span>
+        <button type="button" class="pause-btn" id="pause-btn" aria-pressed="false"><svg aria-hidden="true"><use href="#i-pause"/></svg><span>暂停动画</span></button>
       </div>
     </div>
   </div>
 
-  <section class="numbers" aria-label="首页">
+  <section class="numbers">
     <div class="wrap">
       <ul class="kpis reveal" id="kpis">
         <li><b class="num" data-count="9" data-live-repos>9</b><span>个公开项目</span></li>
@@ -219,7 +229,6 @@
     <div class="wrap">
       <div class="page-head">
         <div>
-          <p class="eyebrow reveal"><svg aria-hidden="true"><use href="#i-person"/></svg>首页</p>
           <h2 id="t-do" class="reveal">专长</h2>
           <p class="section-intro reveal">从 Android 应用到 Web 和安全工具。</p>
         </div>
@@ -245,7 +254,7 @@
 ||             ||
 ||             ||
  |_____________|
-    |_|   |_|</pre><div class="info"><span class="line"><span class="t">kevxngg</span>@<span class="t">el-senor</span></span><span class="line">----------------</span><span class="line"><span class="k">OS</span>: Android</span><span class="line"><span class="k">Root</span>: Magisk, KernelSU</span><span class="line"><span class="k">Focus</span>: Android, web, OSINT</span><span class="line"><span class="k">Stack</span>: Kotlin, PHP, Python</span><span class="line"><span class="k">Project</span>: Monitor (build <span data-live-build>21</span>)</span><span class="line"><span class="k">Repos</span>: 8 public</span><span class="line"><span class="k">Site</span>: 11 languages</span><span class="line swatch"><i style="background:#0C0C0C"></i><i style="background:#C50F1F"></i><i style="background:#13A10E"></i><i style="background:#C19C00"></i><i style="background:#0037DA"></i><i style="background:#881798"></i><i style="background:#3A96DD"></i><i style="background:#CCCCCC"></i></span></div></div><span id="tail"><span class="h">phone:/ # </span><span class="c"></span></span></div>
+    |_|   |_|</pre><div class="info"><span class="line"><span class="t">kevxngg</span>@<span class="t">el-senor</span></span><span class="line">----------------</span><span class="line"><span class="k">OS</span>: Android</span><span class="line"><span class="k">Root</span>: Magisk, KernelSU</span><span class="line"><span class="k">Focus</span>: Android, web, OSINT</span><span class="line"><span class="k">Stack</span>: Kotlin, PHP, Python</span><span class="line"><span class="k">Project</span>: Monitor (build <span data-live-build>112</span>)</span><span class="line"><span class="k">Repos</span>: <span data-live-repos>9</span> public</span><span class="line"><span class="k">Site</span>: 11 languages</span><span class="line swatch"><i style="background:#0C0C0C"></i><i style="background:#C50F1F"></i><i style="background:#13A10E"></i><i style="background:#C19C00"></i><i style="background:#0037DA"></i><i style="background:#881798"></i><i style="background:#3A96DD"></i><i style="background:#CCCCCC"></i></span></div></div><span id="tail"><span class="h">phone:/ # </span><span class="c"></span></span></div>
         </div>
         <div class="grid2">
       <article class="card tilt do reveal" style="--d:0.00s"><div class="ico"><svg aria-hidden="true"><use href="#i-android"/></svg></div><h3>Android 开发</h3><p>使用 Kotlin 和 Jetpack Compose 开发原生应用，专为已 Root 设备设计。</p><ul><li>Kotlin</li><li>Jetpack Compose</li></ul></article>
@@ -261,8 +270,8 @@
     <div class="story-sticky">
       <div class="story-grid">
         <div class="story-head">
-          <p class="eyebrow"><svg aria-hidden="true"><use href="#i-star"/></svg>精选项目</p>
           <h2 id="t-monitor">Monitor</h2>
+          <p class="demo-note">示意演示：数值并非真实读数。</p>
         </div>
         <div class="phone-stage">
           <div class="phone3d" id="phone3d" data-stage="0">
@@ -289,7 +298,7 @@
                   <div><i style="--c:#8C8FF0"></i><b>Launcher</b><span id="p2">0.6%</span></div>
                 </div>
                 <div class="fx fx-game" aria-hidden="true"><svg><use href="#i-game"/></svg><b>游戏模式</b><span class="on">ON</span></div>
-                <div class="fx fx-upd" aria-hidden="true"><svg><use href="#i-update"/></svg><b>新版本</b><span class="on">build <span data-live-build>21</span></span></div>
+                <div class="fx fx-upd" aria-hidden="true"><svg><use href="#i-update"/></svg><b>新版本</b><span class="on">build <span data-live-build>112</span></span></div>
               </div>
             </div>
           </div>
@@ -364,7 +373,6 @@
     <div class="wrap">
       <div class="page-head">
         <div>
-          <p class="eyebrow reveal"><svg aria-hidden="true"><use href="#i-history"/></svg>Monitor</p>
           <h2 id="t-history" class="reveal">版本历史</h2>
           <p class="section-intro reveal">Monitor 的演进，逐个构建。</p>
         </div>
@@ -399,7 +407,6 @@
     <div class="wrap">
       <div class="page-head">
         <div>
-          <p class="eyebrow reveal"><svg aria-hidden="true"><use href="#i-grid"/></svg>GitHub</p>
           <h2 id="t-projects" class="reveal">项目</h2>
           <p class="section-intro reveal">我的公开仓库，以“进程”选项卡的方式呈现：用途、语言和最近更新时间。</p>
         </div>
@@ -437,7 +444,6 @@
     <div class="wrap">
       <div class="page-head">
         <div>
-          <p class="eyebrow reveal"><svg aria-hidden="true"><use href="#i-code"/></svg>技术</p>
           <h2 id="t-tech" class="reveal">技术</h2>
           <p class="section-intro reveal">我的项目所使用的技术。</p>
         </div>
@@ -445,7 +451,7 @@
       <div class="tech">
         <article class="card tilt code-card reveal" id="code-card">
           <h3>GitHub 上的代码</h3>
-          <p>根据 GitHub 统计，我公开仓库中各语言的代码占比。</p>
+          <p>根据 GitHub 统计，我公开仓库中各语言的代码占比。 <span class="asof">(<time datetime="2026-11-03T00:00:00Z" data-long>2026-11-03</time>)</span></p>
           <div class="stack-bar" role="img" aria-label="按语言划分的代码: PHP 39.6%, Python 25.0%, Kotlin 17.7%, Shell 9.2%, JavaScript 3.6%, CSS 3.0%, HTML 1.8%, 其他 0.1%">
           <i style="--w:39.65%;--c:#4F5D95;--d:0.00s"></i>
           <i style="--w:25.01%;--c:#3572A5;--d:0.08s"></i>
@@ -471,14 +477,14 @@
           <h3>工具与平台</h3>
           <p>我在 Android 上工作的基础。</p>
           <ul class="tools">
-          <li><span class="mono" style="--c:#3DDC84">A</span><div><b>Android</b><span>平台</span></div></li>
+          <li><span class="mono" style="--c:#3DDC84;--t:#05070D">A</span><div><b>Android</b><span>平台</span></div></li>
           <li><span class="mono" style="--c:#7F52FF">K</span><div><b>Kotlin</b><span>语言</span></div></li>
-          <li><span class="mono" style="--c:#4285F4">JC</span><div><b>Jetpack Compose</b><span>界面框架</span></div></li>
+          <li><span class="mono" style="--c:#4285F4;--t:#05070D">JC</span><div><b>Jetpack Compose</b><span>界面框架</span></div></li>
           <li><span class="mono" style="--c:#3572A5">Py</span><div><b>Python</b><span>语言</span></div></li>
           <li><span class="mono" style="--c:#4F5D95">php</span><div><b>PHP</b><span>Web</span></div></li>
           <li><span class="mono" style="--c:#2B2B2B">$_</span><div><b>Bash</b><span>Shell</span></div></li>
-          <li><span class="mono" style="--c:#00AF9C">M</span><div><b>Magisk</b><span>Root</span></div></li>
-          <li><span class="mono" style="--c:#E8A33D">SU</span><div><b>KernelSU</b><span>Root</span></div></li>
+          <li><span class="mono" style="--c:#00AF9C;--t:#05070D">M</span><div><b>Magisk</b><span>Root</span></div></li>
+          <li><span class="mono" style="--c:#E8A33D;--t:#05070D">SU</span><div><b>KernelSU</b><span>Root</span></div></li>
           <li><span class="mono" style="--c:#E3008C">R</span><div><b>Custom ROMs</b><span>系统</span></div></li>
           </ul>
         </article>
@@ -490,7 +496,6 @@
     <div class="wrap">
       <div class="page-head">
         <div>
-          <p class="eyebrow reveal"><svg aria-hidden="true"><use href="#i-chat"/></svg>联系</p>
           <h2 id="t-contact" class="reveal">联系我</h2>
           <p class="section-intro reveal">最快的联系方式是 Telegram。我在所有平台都叫 kevxngg。</p>
         </div>
@@ -547,7 +552,7 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script>window.SITE_T = {"copied": "已复制 Discord 用户名", "latest": "最新版本：build {b}，发布于 {d}。", "more": "显示全部构建", "less": "收起", "tlNew": "在 GitHub 上查看更新内容", "tlLatest": "最新"};</script>
+<script>window.SITE_T = {"pause": "暂停动画", "play": "继续动画", "copied": "已复制 Discord 用户名", "latest": "最新版本：build {b}，发布于 {d}。", "more": "显示全部构建", "less": "收起", "tlNew": "在 GitHub 上查看更新内容", "tlLatest": "最新"};</script>
 <script src="/assets/site.js"></script>
 </body>
 </html>
