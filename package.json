@@ -1,0 +1,12 @@
+{
+  "name": "kevxngg.github.io",
+  "private": true,
+  "description": "Pruebas de la web personal (la web en sí es HTML, CSS y JS sin compilación)",
+  "type": "module",
+  "scripts": {
+    "test": "node --test --test-concurrency=1 tests/site.test.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "1.65.1"
+  }
+}
